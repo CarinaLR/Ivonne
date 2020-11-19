@@ -48,6 +48,32 @@
     />
     <!-- Custom styles -->
     <link href="{% static 'auctions/styles.css' %}" rel="stylesheet" />
+    <style type="text/css">
+      html,
+      body,
+      header,
+      .carousel {
+        height: 60vh;
+      }
+
+      @media (max-width: 740px) {
+        html,
+        body,
+        header,
+        .carousel {
+          height: 100vh;
+        }
+      }
+
+      @media (min-width: 800px) and (max-width: 850px) {
+        html,
+        body,
+        header,
+        .carousel {
+          height: 100vh;
+        }
+      }
+    </style>
   </head>
   <body>
     <h1>Juzmooth</h1>
@@ -56,23 +82,94 @@
       <strong>{{ user.username }}</strong>. {% else %} Not signed in.
     </div>
     {% endif %}
-    <ul class="nav">
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'index' %}">Active Listings</a>
-      </li>
-      {% if user.is_authenticated %}
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
-      </li>
-      {% else %}
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'login' %}">Log In</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'register' %}">Register</a>
-      </li>
-      {% endif %}
-    </ul>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-md navbar-light white">
+      <div class="container-fluid">
+        <!-- Brand -->
+        <a class="navbar-brand mr-3" href="{% url 'index' %}">
+          <strong class="green-text">Juzmooth</strong>
+        </a>
+
+        <!-- Collapse -->
+        <button
+          type="button"
+          class="navbar-toggler"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Links -->
+        <div
+          class="collapse navbar-collapse w-100 order-1 order-md-0 dual-collapse2"
+          id="navbarSupportedContent"
+        >
+          <!-- Left -->
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link waves-effect" href="{% url 'index' %}"
+                >Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a
+                class="nav-link waves-effect"
+                href="{% url 'logout' %}"
+                target="_blank"
+                >Log Out</a
+              >
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a
+                class="nav-link waves-effect"
+                href="{% url 'login' %}"
+                target="_blank"
+                >Log In</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link waves-effect"
+                href="{% url 'register' %}"
+                target="_blank"
+                >Register</a
+              >
+            </li>
+            {% endif %}
+          </ul>
+
+          <!-- Right -->
+          <ul class="navbar-nav nav-flex-icons">
+            <li class="nav-item">
+              <a class="nav-link waves-effect">
+                <span class="badge red z-depth-1 mr-1"> 1 </span>
+                <i class="fas fa-shopping-cart"></i>
+                <span class="clearfix d-none d-sm-inline-block"> Cart </span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link waves-effect" target="_blank">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link waves-effect" target="_blank">
+                <i class="fab fa-instagram"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Navbar -->
     <hr />
     {% block body %} {% endblock %}
   </body>
