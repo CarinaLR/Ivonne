@@ -1,0 +1,107 @@
+{% extends "auctions/layout.html" %} {% load static %} {% block body %}
+
+<!--Main layout-->
+<main class="mt-5 pt-4">
+  <div class="container dark-grey-text mt-5">
+    <!--Grid row-->
+    <div class="row wow fadeIn">
+      <!--Grid column-->
+      <div class="col-md-6 mb-4">
+        <img
+          src="{% static 'auctions/juzmooth/juz_green.jpg' %}"
+          class="img-fluid"
+          alt=""
+        />
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-md-6 mb-4">
+        <!--Content-->
+        <div class="p-4">
+          <div class="mb-3">
+            <a href="">
+              <span class="badge blue mr-1">New</span>
+            </a>
+            <a href="">
+              <span class="badge purple mr-1">Bestseller</span>
+            </a>
+          </div>
+
+          <p class="lead">
+            <span class="mr-1">
+              <del>$5.20</del>
+            </span>
+            <span>$4.60</span>
+          </p>
+
+          <p class="lead font-weight-bold">Description</p>
+
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Et dolor
+            suscipit libero eos atque quia ipsa sint voluptatibus! Beatae sit
+            assumenda asperiores iure at maxime atque repellendus maiores quia
+            sapiente.
+          </p>
+
+          <form class="d-flex justify-content-left">
+            <!-- Default input -->
+            <input
+              type="number"
+              value="1"
+              aria-label="Search"
+              class="form-control"
+              style="width: 100px"
+            />
+            <button class="btn btn-primary btn-md my-0 p" type="submit">
+              Add to cart
+              <i class="fas fa-shopping-cart ml-1"></i>
+            </button>
+          </form>
+        </div>
+        <!--Content-->
+      </div>
+      <!--Grid column-->
+    </div>
+    <!--Grid row-->
+  </div>
+</main>
+<!--Main layout-->
+
+<!--Footer-->
+<footer
+  class="page-footer text-center font-small mt-4 wow fadeIn"
+  style="background-color: #faf0e6"
+>
+  <hr class="my-4" />
+
+  <!-- Social icons -->
+  <div class="pb-4">
+    <a
+      href="https://www.facebook.com/Juzmooth-879856658763480"
+      class="nav-link waves-effect"
+      target="_blank"
+    >
+      <i class="fab fa-facebook-f"></i>
+    </a>
+
+    <a
+      href="https://www.instagram.com/juzmooth/?hl=es"
+      class="nav-link waves-effect"
+      target="_blank"
+    >
+      <i class="fab fa-instagram"></i>
+    </a>
+  </div>
+  <!-- Social icons -->
+
+  <!--Copyright-->
+  <div class="footer-copyright py-3">
+    © 2020 Copyright:
+    <a href="#" target="_blank"> Juzmooth </a>
+  </div>
+  <!--/.Copyright-->
+</footer>
+<!--/.Footer-->
+
+{%endblock %}
