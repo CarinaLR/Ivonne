@@ -4,7 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 
-from .models import User
+from .models import User, Product, OrderProduct
 
 
 def index(request):
@@ -64,6 +64,14 @@ def register(request):
 
 
 def product(request):
+    allproducts = Product.objects.all()
+    print("all ", allproducts)
+
+    for product in allproducts:
+        print(product.name)
+
+    product_clicked = request.POST.get("product_name")
+    print("produt_clicked", product_clicked)
     return render(request, "auctions/product.html")
 
 
