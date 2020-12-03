@@ -62,6 +62,8 @@ def register(request):
     else:
         return render(request, "auctions/register.html")
 
+# block to get the clicked product to show product description
+
 
 def product(request):
     allproducts = Product.objects.all()
@@ -70,8 +72,9 @@ def product(request):
     for product in allproducts:
         print(product.name)
 
-    product_clicked = request.POST.get("product_name")
-    print("produt_clicked", product_clicked)
+    product_clicked = request.POST.get("product_value")
+    print("product_clicked", product_clicked)
+
     return render(request, "auctions/product.html")
 
 

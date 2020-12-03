@@ -29,23 +29,26 @@
               <!--Card image-->
 
               <!--Card content-->
-              <div class="card-body text-center">
+              <div class="card-body text-center" name="product_value" value="2">
+                 <form method="post">
+                  {% csrf_token %}
+                  <input type="hidden" name="product_value" value="2"/>
                 <!--Category & Title-->
                 <a href="" class="grey-text">
                   <h5>Detox</h5>
                 </a>
                 <h5>
                   <strong>
-                    <a href="{% url 'product' %}" class="dark-grey-text" value="Cucumber-Jugo Verde" name="product_name">Cucumber-Jugo Verde
+                    <a href="{% url 'product' %}" class="dark-grey-text">Cucumber-Jugo Verde
                       <span class="badge badge-pill primary-color">bestseller</span>
                     </a>
                   </strong>
                 </h5>
-
                 <h4 class="font-weight-bold blue-text">
                   <strong>$4.20</strong>
                 </h4>
 
+                </form>
               </div>
               <!--Card content-->
 
