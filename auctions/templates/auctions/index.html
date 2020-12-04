@@ -30,10 +30,9 @@
 
               <!--Card content-->
               <div class="card-body text-center" name="product_value" value="2">
-                 <form method="post">
+                 <form action="{% url 'product' 2 %}" method="post">
                   {% csrf_token %}
                   <input type="hidden" name="product_value" value="2"/>
-                  <input type="submit" name="clicked" value="Detox" />
                 <!--Category & Title-->
                 <a href="" class="grey-text">
                   <h5>Detox</h5>
@@ -48,7 +47,7 @@
                 <h4 class="font-weight-bold blue-text">
                   <strong>$4.20</strong>
                 </h4>
-
+                <input type="submit" name="clicked" value="Detalles" id="details"/>
                 </form>
               </div>
               <!--Card content-->
@@ -76,6 +75,9 @@
 
               <!--Card content-->
               <div class="card-body text-center">
+              <form action="{% url 'product' 3 %}" method="post">
+                  {% csrf_token %}
+                  <input type="hidden" name="product_value" value="3"/>
                 <!--Category & Title-->
                 <a href="" class="grey-text">
                   <h5>Energy</h5>
@@ -89,7 +91,8 @@
                 <h4 class="font-weight-bold blue-text">
                   <strong>$3.80</strong>
                 </h4>
-
+                  <input type="submit" name="clicked" value="Detalles" id="details"/>
+                </form>
               </div>
               <!--Card content-->
 
@@ -116,6 +119,9 @@
 
               <!--Card content-->
               <div class="card-body text-center">
+              <form action="{% url 'product' 1 %}" method="post">
+                  {% csrf_token %}
+                  <input type="hidden" name="product_value" value="1"/>
                 <!--Category & Title-->
                 <a href="" class="grey-text">
                   <h5>Accelera</h5>
@@ -131,7 +137,8 @@
                 <h4 class="font-weight-bold blue-text">
                   <strong>$2</strong>
                 </h4>
-
+                  <input type="submit" name="clicked" value="Detalles" id="details"/>
+                </form>
               </div>
               <!--Card content-->
 
@@ -158,6 +165,9 @@
 
               <!--Card content-->
               <div class="card-body text-center">
+              <form action="{% url 'product' 4 %}" method="post">
+                  {% csrf_token %}
+                  <input type="hidden" name="product_value" value="4"/>
                 <!--Category & Title-->
                 <a href="" class="grey-text">
                   <h5>Fortalece</h5>
@@ -173,7 +183,8 @@
                 <h4 class="font-weight-bold blue-text">
                   <strong>$15</strong>
                 </h4>
-
+                  <input type="submit" name="clicked" value="Detalles" id="details"/>
+                </form>
               </div>
               <!--Card content-->
 
@@ -206,6 +217,9 @@
 
               <!--Card content-->
               <div class="card-body text-center">
+              <form action="{% url 'product' 5 %}" method="post">
+                  {% csrf_token %}
+                  <input type="hidden" name="product_value" value="5"/>
                 <!--Category & Title-->
                 <a href="" class="grey-text">
                   <h5>Detox</h5>
@@ -221,7 +235,8 @@
                 <h4 class="font-weight-bold blue-text">
                   <strong>$45</strong>
                 </h4>
-
+                  <input type="submit" name="clicked" value="Detalles" id="details"/>
+                </form>
               </div>
               <!--Card content-->
 
@@ -248,6 +263,9 @@
 
               <!--Card content-->
               <div class="card-body text-center">
+              <form action="{% url 'product' 6 %}" method="post">
+                  {% csrf_token %}
+                  <input type="hidden" name="product_value" value="6"/>
                 <!--Category & Title-->
                 <a href="" class="grey-text">
                   <h5>Circulacion</h5>
@@ -261,7 +279,8 @@
                 <h4 class="font-weight-bold blue-text">
                   <strong>$4.20</strong>
                 </h4>
-
+                  <input type="submit" name="clicked" value="Detalles" id="details"/>
+                </form>
               </div>
               <!--Card content-->
 
@@ -288,6 +307,9 @@
 
               <!--Card content-->
               <div class="card-body text-center">
+              <form action="{% url 'product' 7 %}" method="post">
+                  {% csrf_token %}
+                  <input type="hidden" name="product_value" value="7"/>
                 <!--Category & Title-->
                 <a href="" class="grey-text">
                   <h5>Diuretico</h5>
@@ -303,7 +325,8 @@
                 <h4 class="font-weight-bold blue-text">
                   <strong>$3.80</strong>
                 </h4>
-
+                  <input type="submit" name="clicked" value="Detalles" id="details"/>
+                </form>
               </div>
               <!--Card content-->
 
@@ -330,6 +353,9 @@
 
               <!--Card content-->
               <div class="card-body text-center">
+              <form action="{% url 'product' 8 %}" method="post">
+                  {% csrf_token %}
+                  <input type="hidden" name="product_value" value="8"/>
                 <!--Category & Title-->
                 <a href="" class="grey-text">
                   <h5>Hidrata</h5>
@@ -343,7 +369,8 @@
                 <h4 class="font-weight-bold blue-text">
                   <strong>$3.80</strong>
                 </h4>
-
+                  <input type="submit" name="clicked" value="Detalles" id="details"/>
+                </form>
               </div>
               <!--Card content-->
 

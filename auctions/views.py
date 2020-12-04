@@ -8,15 +8,6 @@ from .models import User, Product, OrderProduct
 
 
 def index(request):
-    if request.method == "POST":
-
-        hideen_pro = request.POST.get("product_value")
-        print("hideen_pro", hideen_pro)
-
-        prod_id = int(hideen_pro)
-        print("prod_id", prod_id)
-
-        product(request, prod_id)
 
     return render(request, "auctions/index.html")
 
@@ -72,20 +63,30 @@ def register(request):
     else:
         return render(request, "auctions/register.html")
 
-# block to get the clicked product to show product description
+# Block to get the clicked product to show product description
 
 
 def product(request, prod_id):
     allproducts = Product.objects.all()
-    print("all ", allproducts)
 
-    for product in allproducts:
-        print(product.name)
+    if request.method == "POST":
+
+        hideen_pro = request.POST.get("product_value")
+        prod_id = int(hideen_pro)
 
     clicked_prod = prod_id
-    print("clicked_prod ", clicked_prod)
 
-    return render(request, "auctions/product.html")
+    for product in allproducts:
+        if clicked_prod == product.id:
+            prod_name = product.name
+            prod_descpt = product.description
+            prod_price = product.price
+
+    return render(request, "auctions/product.html", {
+        "prod_name": prod_name,
+        "prod_descpt": prod_descpt,
+        "prod_price": prod_price
+    })
 
 
 def checkout(request):
