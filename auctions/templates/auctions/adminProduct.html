@@ -53,67 +53,63 @@
       producto y precio. Para adjuntar una imagen del producto, por favor
       comunicarse con el Developer autorizado.</small
     >
-    <form method="post">
-      {% csrf_token %}
-      <input type="hideen" name="hi" value="2" />
-      <input type="submit" name="clicked" value="click" />
-      <a href="" class="grey-text">
-        <h5>Detox</h5>
-      </a>
-      <h5>
-        <strong>
-          <a href="#" class="dark-grey-text"
-            >Cucumber-Jugo Verde
-            <span class="badge badge-pill primary-color">bestseller</span>
-          </a>
-        </strong>
-      </h5>
-      <h4 class="font-weight-bold blue-text">
-        <strong>$4.20</strong>
-      </h4>
-    </form>
+    <br />
 
-    <!--Card-->
+    {% if message %}
+    <div>{{ message }}</div>
+    {% endif %}
+
+    <!--Form New Product-->
     <div class="card">
-      <!--Card content-->
-      <form class="card-body">
+      <!--New Product content-->
+      <form class="card-body" action="{% url 'adminProduct' %}" method="post">
+        {% csrf_token %}
         <!--Grid row-->
         <div class="row">
           <!--Grid column-->
           <div class="col-md-6 mb-2">
-            <!--firstName-->
-            <div class="md-form">
-              <input type="text" id="firstName" class="form-control" />
-              <label for="firstName" class="">Nombre Del Producto</label>
+            <!--Product Name-->
+            <div>
+              <label for="#">Nombre Del Producto</label>
+              <input
+                type="text"
+                class="form-control"
+                id="zip"
+                placeholder=""
+                name="newProdName"
+              />
             </div>
           </div>
           <!--Grid column-->
 
           <!--Grid column-->
           <div class="col-md-6 mb-2">
-            <!--lastName-->
-            <div class="md-form">
-              <input type="text" class="form-control" placeholder="" />
-              <label for="lastName" class="">Precio</label>
+            <!--Product Price-->
+            <div>
+              <label for="#">Precio</label>
+              <input
+                type="text"
+                class="form-control"
+                id="zip"
+                placeholder=""
+                name="newProdPrice"
+              />
             </div>
           </div>
           <!--Grid column-->
         </div>
         <!--Grid row-->
 
-        <!--Grid row-->
-        <div class="row">
-          <!--Grid column-->
-          <div class="col-lg-4 col-md-12 mb-4">
-            <!--lastName-->
-            <div class="md-form">
-              <textarea type="text" id="lastName" class="collapse"></textarea>
-              <label for="#" class="">Description</label>
-            </div>
-          </div>
-          <!--Grid column-->
-        </div>
-        <!--Grid row-->
+        <!--Product Description-->
+
+        <label for="#">Description</label>
+        <textarea
+          type="text"
+          class="form-control"
+          id="zip"
+          placeholder=""
+          name="newProdDescpt"
+        ></textarea>
 
         <hr class="mb-4" />
         <button class="btn btn-primary btn-lg btn-block" type="submit">
@@ -121,7 +117,7 @@
         </button>
       </form>
     </div>
-    <!--/.Card-->
+    <!--/.Form New Product-->
   </div>
   <!--Main Content-->
 </div>

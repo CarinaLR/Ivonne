@@ -98,6 +98,22 @@ def checkout(request):
 def adminProduct(request):
     allproducts = Product.objects.all()
 
+    # Add new product via post request
+    if request.method == "POST":
+        prod_name = request.POST["newProdName"]
+        prod_descpt = request.POST["newProdDescpt"]
+        prod_price = request.POST["newProdPrice"]
+
+        priceNum = float(prod_price)
+
+        # Attempt to create new product
+
+        product = Product.objects.create(
+            name=prod_name, description=prod_descpt, price=priceNum)
+        product.save()
+
+        return render(request, "auctions/adminProduct.html")
+
     return render(request, "auctions/adminProduct.html", {
         "allProducts": allproducts
     })
