@@ -93,14 +93,11 @@ def checkout(request):
     return render(request, "auctions/checkout.html")
 
 
-# Block to add, update or delete Products by admins
-
+# Block to add, update or delete Products by the admins
 
 def adminProduct(request):
-    if request.method == "POST":
+    allproducts = Product.objects.all()
 
-        hideen_in = request.POST.get("hi")
-
-        print("hideen_in", hideen_in)
-
-    return render(request, "auctions/adminProduct.html")
+    return render(request, "auctions/adminProduct.html", {
+        "allProducts": allproducts
+    })
