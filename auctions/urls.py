@@ -8,6 +8,9 @@ urlpatterns = [
     path("logout", views.logout_view, name="logout"),
     path("register", views.register, name="register"),
     path("adminProduct", views.adminProduct, name="adminProduct"),
+    path("changingProduct/<int:prod_id>",
+         views.changingProduct, name="changingProduct"),
+    path("responseJSON", views.responseJSON, name="responseJSON"),
     path("product/<int:prod_id>", views.product, name="product"),
     path("checkout", views.checkout, name="checkout"),
 

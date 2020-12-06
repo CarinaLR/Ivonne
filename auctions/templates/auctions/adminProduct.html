@@ -10,8 +10,8 @@
   <hr />
 
   <div class="container">
-    <form method="post">
-      {% csrf_token %}
+    {% comment %} <form method="post">
+      {% csrf_token %} {% endcomment %}
 
       <!-- List Of Products -->
       <a href="" class="purple-text">
@@ -30,14 +30,17 @@
               >${{ product.price }}</span
             >
             <br />
-            <span class="badge badge-pill primary-color">Update</span>
-
-            <span class="badge badge-pill danger-color">Delete</span>
+            <button style="border-color: transparent">
+              <span class="badge badge-pill primary-color">Update</span>
+            </button>
+            <button style="border-color: transparent" id="delete" action="{% url 'changingProduct' product.id %}">
+              <span class="badge badge-pill danger-color">Delete</span>
+            </button>
           </h5>
         </li>
         {% endfor %}
       </ul>
-    </form>
+
   </div>
   <!-- List Of Products -->
 

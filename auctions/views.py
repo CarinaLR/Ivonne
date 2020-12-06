@@ -1,5 +1,7 @@
+import json
 from django.contrib.auth import authenticate, login, logout
 from django.db import IntegrityError
+from django.http import JsonResponse
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
@@ -117,3 +119,31 @@ def adminProduct(request):
     return render(request, "auctions/adminProduct.html", {
         "allProducts": allproducts
     })
+
+# Block to Delete or Update product by id
+
+
+def changingProduct(request, prod_id):
+    allproducts = Product.objects.all()
+
+    product_id = prod_id
+    print("profuct to delete", product_id)
+
+    return render(request, "auctions/adminProduct.html", {
+        "allProducts": allproducts,
+        "message": "Got product id to delete"
+    })
+
+# Block to return JSON response
+
+
+def responseJSON(request):
+    allproducts = Product.objects.all().order_by('pk')
+    products_arr = []
+
+    # Append each product to send response
+    for product in allproducts:
+        products_arr.append(
+            {"id": product.id, "name": product.name, "description": product.description, "price": product.price})
+
+    return JsonResponse(products_arr, safe=False)
