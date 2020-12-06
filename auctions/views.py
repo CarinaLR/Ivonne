@@ -125,6 +125,7 @@ def adminProduct(request):
 
 def changingProduct(request, prod_id):
     allproducts = Product.objects.all()
+    got_id = prod_id
 
     product_id = prod_id
     print("profuct to delete", product_id)
