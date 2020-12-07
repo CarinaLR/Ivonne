@@ -5,6 +5,7 @@ from django.http import JsonResponse
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
+from django.views.decorators.csrf import csrf_exempt
 
 from .models import User, Product, OrderProduct
 
@@ -163,3 +164,11 @@ def responseJSON(request):
             {"id": product.id, "name": product.name, "description": product.description, "price": product.price})
 
     return JsonResponse(products_arr, safe=False)
+
+
+@csrf_exempt
+def editProduct(request, prod_id):
+    # Get product by id
+    get_prod = Product.objects.get(pk=prod_id)
+    print("product_id, ", get_prod)
+    return HttpResponse(status=204)

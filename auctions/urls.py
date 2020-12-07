@@ -11,6 +11,8 @@ urlpatterns = [
     path("deleteProduct/<int:prod_id>",
          views.deleteProduct, name="deleteProduct"),
     path("responseJSON", views.responseJSON, name="responseJSON"),
+    path("editProduct/<int:prod_id>",
+         views.editProduct, name="editProduct"),
     path("product/<int:prod_id>", views.product, name="product"),
     path("checkout", views.checkout, name="checkout"),
 
