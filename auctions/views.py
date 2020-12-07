@@ -114,7 +114,9 @@ def adminProduct(request):
             name=prod_name, description=prod_descpt, price=priceNum)
         product.save()
 
-        return render(request, "auctions/adminProduct.html")
+        return render(request, "auctions/adminProduct.html", {
+            "allProducts": allproducts
+        })
 
     return render(request, "auctions/adminProduct.html", {
         "allProducts": allproducts
