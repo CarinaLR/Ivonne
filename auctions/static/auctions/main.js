@@ -1,4 +1,4 @@
-new WOW().init();
+// new WOW().init();
 
 document.addEventListener("DOMContentLoaded", function () {
   document
@@ -6,10 +6,10 @@ document.addEventListener("DOMContentLoaded", function () {
     .addEventListener("click", () => delete_prod(prod_id));
 });
 
-function delete_prod(prod_id) {
+const delete_prod = (prod_id) => {
   let prod_selected = prod_id;
   console.log("this is the product id", prod_selected);
-}
+};
 
 // const loadProducts = () => {
 //   // Fetch data from db to get all products

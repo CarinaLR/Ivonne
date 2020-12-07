@@ -30,15 +30,15 @@
               >${{ product.price }}</span
             >
             <br />
-            <button style="border-color: transparent; background-color: transparent;">
+            <a style="border-color: transparent; background-color: transparent;" href="#">
               <span class="badge badge-pill primary-color">Update</span>
-            </button>
+            </a>
 
 
 
-            <button style="border-color: transparent; background-color: transparent;"  id="delete_prod" onclick="delete_prod({{ product.id }})">
+            <a style="border-color: transparent; background-color: transparent;" href="{% url 'deleteProduct' product.id %}">
                 <span class="badge badge-pill danger-color">Delete</span>
-            </button>
+            </a>
 
           </h5>
         </li>

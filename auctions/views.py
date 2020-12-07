@@ -123,12 +123,25 @@ def adminProduct(request):
 # Block to Delete or Update product by id
 
 
-def changingProduct(request, prod_id):
+def deleteProduct(request, prod_id):
     allproducts = Product.objects.all()
     got_id = prod_id
 
     product_id = prod_id
     print("profuct to delete", product_id)
+
+    to_delete = Product.objects.get(pk=product_id)
+    p_name = to_delete.name
+    p_descpt = to_delete.description
+    p_price = to_delete.price
+
+    print("name: ", p_name, "price: ", p_price)
+    print("description: ", p_descpt)
+
+    # Attempt to delete product
+
+    product = Product.objects.get(pk=product_id)
+    product.delete()
 
     return render(request, "auctions/adminProduct.html", {
         "allProducts": allproducts,
