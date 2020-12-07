@@ -147,7 +147,7 @@
     <!--Form Edit Product-->
     <div class="card">
       <!--Edit Product content-->
-      <form class="card-body" action="{% url 'adminProduct' %}" method="post">
+      <form class="card-body" id="editProd_form" action="{% url 'adminProduct' %}" method="post" name="editProd_form">
         {% csrf_token %}
         <!--Grid row-->
         <div class="row">

@@ -2,6 +2,8 @@
 
 // alert("Hello, World");
 
+// Block to fetch data, get only the selected item, and show and hide respective view
+
 const update_prod = (prod_id) => {
   // Show edit form and hide add form
   document.querySelector("#add_box").style.display = "none";
@@ -23,6 +25,8 @@ const update_prod = (prod_id) => {
     });
 };
 
+// Block to populate textarea that allows user to update product info.
+
 const editProd_view = (response) => {
   // Getting response with information only for product to be edited.
   console.log("response view- ", response);
@@ -43,4 +47,23 @@ const editProd_view = (response) => {
   let new_textarea = (document.querySelector(
     "#editProdDescpt"
   ).innerHTML = edit_descpt);
+
+  saveUptProd(response);
+};
+
+// Block to send put request to the server and save updated product info.
+
+const saveUptProd = (response) => {
+  let product = response;
+  let prod_id = response.id;
+
+  // On submit, send product info to update product.
+  // document.querySelector("#editProd_form").onsubmit = () => {
+  //   // Get all values from textarea to update content.
+  //   let new_prodName = document.getElementById("editProdName").value;
+  //   let new_prodPrice = document.getElementById("editProdPrice").value;
+  //   let new_prodDescpt = document.getElementById("editProdDescpt").value;
+  // };
+
+  console.log("new_content: ", product, prod_id);
 };
