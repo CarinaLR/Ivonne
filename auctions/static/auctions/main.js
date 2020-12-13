@@ -56,32 +56,40 @@ const editProd_view = (response) => {
   let id = prod_id;
   console.log("id:", id);
   let upt_prodName, upt_prodPrice, upt_prodDescpt;
+
   //On submit, send product info to update product.
-  document.querySelector("#editProd_form").onsubmit = () => {
-    // Get all values from textarea to update content.
-    upt_prodName = document.getElementById("editProdName").value;
-    new_prodPrice = document.getElementById("editProdPrice").value;
-    new_prodDescpt = document.getElementById("editProdDescpt").value;
+  const edit_prod = (document.querySelector(
+    "#editProd_form"
+  ).onsubmit = async () => {
+    try {
+      // Get all values from textarea to update content.
+      upt_prodName = document.getElementById("editProdName").value;
+      new_prodPrice = document.getElementById("editProdPrice").value;
+      new_prodDescpt = document.getElementById("editProdDescpt").value;
 
-    fetch(`/editProduct/${id}`, {
-      method: "PUT",
-      body: JSON.stringify({
-        name: upt_prodName,
-        description: upt_prodDescpt,
-        price: upt_prodPrice,
-      }),
-    })
-      .then((response) => response.json())
-      .then((result) => {
-        console.log("result ->", result);
-      });
+      const res = await fetch(`/editProduct/${id}`, {
+        method: "PUT",
+        body: JSON.stringify({
+          name: upt_prodName,
+          description: upt_prodDescpt,
+          price: upt_prodPrice,
+        }),
+      })
+        .then((res) => res.json())
+        .then((result) => {
+          console.log("result ->", result);
+        });
 
-    console.log(
-      `ID: ${id}, Name: ${upt_prodName}, Price: ${upt_prodPrice}, Description: ${upt_prodDescpt}`
-    );
+      console.log(
+        `ID: ${id}, Name: ${upt_prodName}, Price: ${upt_prodPrice}, Description: ${upt_prodDescpt}`
+      );
+    } catch (err) {
+      console.error("err", err);
+    }
     //Once the post has been submitted, return false to prevent reload.
     return false;
-  };
+  });
+  edit_prod.preventDefault();
 };
 
 // Block to send put request to the server and save updated product info.
