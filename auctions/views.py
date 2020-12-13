@@ -174,11 +174,12 @@ def editProduct(request, prod_id):
     print("product_id, ", get_prod)
 
     if request.method == "PUT":
-        data = json.loads(request.body)
-        get_prod.name = data["editProdName"]
-        get_prod.price = int(data["editProdPrice"])
-        get_prod.description = data["editProdDescpt"]
-        print(f"changed: ", get_prod.id, get_prod.name,
-              get_prod.price, get_prod.description)
+        print("get put request")
+    #     data = json.loads(request.body)
+    #     get_prod.name = data["editProdName"]
+    #     get_prod.price = int(data["editProdPrice"])
+    #     get_prod.description = data["editProdDescpt"]
+    #     print(f"changed: ", get_prod.id, get_prod.name,
+    #           get_prod.price, get_prod.description)
 
     return HttpResponse(status=204)

@@ -53,14 +53,45 @@ const editProd_view = (response) => {
   console.log("change3 ", new_textarea);
 
   // saveUptProd(response.id);
+  let id = prod_id;
+  console.log("id:", id);
+  let upt_prodName, upt_prodPrice, upt_prodDescpt;
+  //On submit, send product info to update product.
+  document.querySelector("#editProd_form").onsubmit = () => {
+    // Get all values from textarea to update content.
+    upt_prodName = document.getElementById("editProdName").value;
+    new_prodPrice = document.getElementById("editProdPrice").value;
+    new_prodDescpt = document.getElementById("editProdDescpt").value;
+
+    fetch(`/editProduct/${id}`, {
+      method: "PUT",
+      body: JSON.stringify({
+        name: upt_prodName,
+        description: upt_prodDescpt,
+        price: upt_prodPrice,
+      }),
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        console.log("result ->", result);
+      });
+
+    console.log(
+      `ID: ${id}, Name: ${upt_prodName}, Price: ${upt_prodPrice}, Description: ${upt_prodDescpt}`
+    );
+    //Once the post has been submitted, return false to prevent reload.
+    return false;
+  };
 };
 
 // Block to send put request to the server and save updated product info.
 
-// const saveUptProd = (prod_id) => {
-//   console.log("id:", prod_id);
+// const saveUptProd = () => {
 //   let new_prodName, new_prodPrice, new_prodDescpt;
-
+//   let prod_id = document.getElementById("prod_idUpt").value;
+//   console.log("id:", prod_id);
+//   let id = parseInt(prod_id);
+//   console.log("id:", id);
 //   //On submit, send product info to update product.
 //   document.querySelector("#editProd_form").onsubmit = () => {
 //     // Get all values from textarea to update content.
@@ -68,21 +99,21 @@ const editProd_view = (response) => {
 //     new_prodPrice = document.getElementById("editProdPrice").value;
 //     new_prodDescpt = document.getElementById("editProdDescpt").value;
 
-//     fetch(`/editProduct/${prod_id}`, {
-//       method: "PUT",
-//       body: JSON.stringify({
-//         name: new_content,
-//         description: new_prodDescpt,
-//         price: new_prodPrice,
-//       }),
-//     })
-//       .then((response) => response.json())
-//       .then((result) => {
-//         console.log("result ->", result);
-//       });
+//     // fetch(`/editProduct/${prod_id}`, {
+//     //   method: "PUT",
+//     //   body: JSON.stringify({
+//     //     name: new_content,
+//     //     description: new_prodDescpt,
+//     //     price: new_prodPrice,
+//     //   }),
+//     // })
+//     //   .then((response) => response.json())
+//     //   .then((result) => {
+//     //     console.log("result ->", result);
+//     //   });
 
 //     console.log(
-//       `Name: ${new_prodName}, Price: ${new_prodPrice}, Description: ${new_prodDescpt}`
+//       `ID: ${id}, Name: ${new_prodName}, Price: ${new_prodPrice}, Description: ${new_prodDescpt}`
 //     );
 //     //Once the post has been submitted, return false to prevent reload.
 //     return false;
