@@ -21,7 +21,6 @@ const update_prod = (prod_id) => {
           editProd_view(prod);
         }
       }
-      console.log("response - ", response);
     });
 };
 
@@ -29,6 +28,7 @@ const update_prod = (prod_id) => {
 
 const editProd_view = (response) => {
   // Getting response with information only for product to be edited.
+  let prod_id = response.id;
   console.log("response view- ", response);
   let edit_name = response.name;
   console.log("response name- ", response.name);
@@ -38,32 +38,53 @@ const editProd_view = (response) => {
   console.log("response descript- ", response.description);
 
   // Get all product information and populate the form to make a put request with updating info.
+  let prod_idUpt = (document.querySelector("#prod_idUpt").innerHTML = prod_id);
   let new_name = (document.querySelector(
     "#editProdName"
   ).innerHTML = edit_name);
+  console.log("change1 ", new_name);
   let new_price = (document.querySelector(
     "#editProdPrice"
   ).innerHTML = edit_price);
+  console.log("change2 ", new_price);
   let new_textarea = (document.querySelector(
     "#editProdDescpt"
   ).innerHTML = edit_descpt);
+  console.log("change3 ", new_textarea);
 
-  saveUptProd(response);
+  // saveUptProd(response.id);
 };
 
 // Block to send put request to the server and save updated product info.
 
-const saveUptProd = (response) => {
-  let product = response;
-  let prod_id = response.id;
+// const saveUptProd = (prod_id) => {
+//   console.log("id:", prod_id);
+//   let new_prodName, new_prodPrice, new_prodDescpt;
 
-  // On submit, send product info to update product.
-  // document.querySelector("#editProd_form").onsubmit = () => {
-  //   // Get all values from textarea to update content.
-  //   let new_prodName = document.getElementById("editProdName").value;
-  //   let new_prodPrice = document.getElementById("editProdPrice").value;
-  //   let new_prodDescpt = document.getElementById("editProdDescpt").value;
-  // };
+//   //On submit, send product info to update product.
+//   document.querySelector("#editProd_form").onsubmit = () => {
+//     // Get all values from textarea to update content.
+//     new_prodName = document.getElementById("editProdName").value;
+//     new_prodPrice = document.getElementById("editProdPrice").value;
+//     new_prodDescpt = document.getElementById("editProdDescpt").value;
 
-  console.log("new_content: ", product, prod_id);
-};
+//     fetch(`/editProduct/${prod_id}`, {
+//       method: "PUT",
+//       body: JSON.stringify({
+//         name: new_content,
+//         description: new_prodDescpt,
+//         price: new_prodPrice,
+//       }),
+//     })
+//       .then((response) => response.json())
+//       .then((result) => {
+//         console.log("result ->", result);
+//       });
+
+//     console.log(
+//       `Name: ${new_prodName}, Price: ${new_prodPrice}, Description: ${new_prodDescpt}`
+//     );
+//     //Once the post has been submitted, return false to prevent reload.
+//     return false;
+//   };
+// };

@@ -30,7 +30,7 @@
               >${{ product.price }}</span
             >
             <br />
-            <button style="border-color: transparent; background-color: transparent;" href="#" id="update_prod" onclick="update_prod({{ product.id }})">
+            <button style="border-color: transparent; background-color: transparent;" href="{% url 'editProduct' product.id %}" id="update_prod" onclick="update_prod({{ product.id }})">
               <span class="badge badge-pill primary-color">Update</span>
             </button>
 
@@ -133,6 +133,7 @@
 
     <a href="" class="purple-text">
       <h5>Editar Producto</h5>
+      <h5 id="prod_idUpt" name="prod_idUpt">ID: </h5>
     </a>
     <small class="text-muted"
       >Reemplaza cada caracteristica del producto. Puedes editar nombre, description del producto y precio. Para adjuntar una nueva imagen del producto, por favor
@@ -147,7 +148,7 @@
     <!--Form Edit Product-->
     <div class="card">
       <!--Edit Product content-->
-      <form class="card-body" id="editProd_form" action="{% url 'adminProduct' %}" method="post" name="editProd_form">
+      <form class="card-body" id="editProd_form" method="post" name="editProd_form">
         {% csrf_token %}
         <!--Grid row-->
         <div class="row">
