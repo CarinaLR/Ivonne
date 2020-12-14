@@ -425,9 +425,44 @@ energía, etc. tu elijes !!!</p>
 
         <!--Grid column-->
         <div class="col-lg-4 col-md-6 mb-4">
+          <!-- Rotating card -->
+          <div class="card-wrapper">
+            <div id="card-1" class="card card-rotating text-center">
 
-          <img src="{% static 'auctions/juzmooth/turmeric.jpg' %}" class="img-fluid" alt="">
+                  <!-- Front Side -->
+                  <div class="face front">
 
+                      <!-- Image-->
+                      <div>
+                        <img src="{% static 'auctions/juzmooth/turmeric.jpg' %}" class="img-fluid" alt="">
+                        <!-- Triggering button -->
+                        <a class="rotate-btn" data-card="card-1"><i class="fas fa-redo-alt"></i> Click here to rotate</a>
+                      </div>
+
+                    </div>
+                  <!-- Front Side -->
+
+                  <!-- Back Side -->
+                  <div class="face back">
+                    <div class="card-body">
+
+                      <!-- Content -->
+                      <h4 class="font-weight-bold mb-0">About me</h4>
+                      <hr>
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat tenetur odio suscipit non commodi vel
+                        eius veniam maxime?
+                        <hr>
+                      </p>
+                      <!-- Triggering button -->
+                      <a class="rotate-btn" data-card="card-1"><i class="fas fa-undo"></i> Click here to rotate back</a>
+
+                    </div>
+                  </div>
+                  <!-- Back Side -->
+              </div>
+            </div>
+          <!-- Rotating card -->
         </div>
         <!--Grid column-->
 
