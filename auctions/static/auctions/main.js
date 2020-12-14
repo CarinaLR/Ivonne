@@ -2,16 +2,29 @@
 
 // alert("Hello, World");
 
-// Block to fetch data, get only the selected item, and show and hide respective view
+// Stop page to resubmit form and refresh
+const handleForm = (event) => {
+  event.preventDefault();
+};
+
+// Block to show and hide respective view
 
 const update_prod = (prod_id) => {
   // Show edit form and hide add form
   document.querySelector("#add_box").style.display = "none";
   document.querySelector("#edit_box").style.display = "block";
 
+  get_ProdData(prod_id);
+
+  return false;
+};
+
+// Block to fetch data from db to get all products and send response only with selected product.
+
+const get_ProdData = (prod_id) => {
   var updt_id = prod_id;
   console.log(`this is the ${updt_id} updating function`);
-  // Fetch data from db to get all products and send response only with selected product.
+
   fetch("responseJSON")
     .then((response) => response.json())
     .then((response) => {
@@ -60,11 +73,15 @@ const editProd_view = (response) => {
       new_prodPrice = document.getElementById("editProdPrice").value;
       new_prodDescpt = document.getElementById("editProdDescpt").value;
 
+      console.log(
+        `ID: ${id}, Name: ${upt_prodName}, Price: ${upt_prodPrice}, Description: ${upt_prodDescpt}`
+      );
+
       const res = await fetch(`/editProduct/${id}`, {
         method: "PUT",
         body: JSON.stringify({
-          name: upt_prodName,
           description: upt_prodDescpt,
+          name: upt_prodName,
           price: upt_prodPrice,
         }),
       })
@@ -75,11 +92,8 @@ const editProd_view = (response) => {
     } catch (err) {
       console.error("err", err);
     }
-    console.log(
-      `ID: ${id}, Name: ${upt_prodName}, Price: ${upt_prodPrice}, Description: ${upt_prodDescpt}`
-    );
     //Once the post has been submitted, return false to prevent reload.
+    edit_prod.handleForm();
     return false;
   });
-  return false;
 };
