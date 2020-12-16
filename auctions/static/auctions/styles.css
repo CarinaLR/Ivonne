@@ -19,6 +19,36 @@ header,
   border-color: green;
 }
 
+/* Class
+
+.pannels div.cback {
+  transform: rotateY(90deg);
+}
+
+.pannels div.cfront {
+  position: absolute;
+}
+
+.pannels div:hover div.cfront {
+  animation: twirl 0.2s ease-in forwards;
+}
+
+.pannels div:hover div.cback {
+  animation: twirl 0.2s 0.2s ease-out forwards reverse;
+}
+*/
+/*  Card Animation */
+/*
+@keyframes twirl {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(90deg);
+  }
+}
+*/
+
 /* Media */
 
 @media (max-width: 740px) {

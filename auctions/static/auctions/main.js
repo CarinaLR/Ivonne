@@ -79,6 +79,9 @@ const editProd_view = (response) => {
 
       const res = await fetch(`/editProduct/${id}`, {
         method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({
           description: upt_prodDescpt,
           name: upt_prodName,
