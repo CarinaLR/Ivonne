@@ -1,24 +1,84 @@
-{% extends "auctions/layout.html" %}
+{% extends "auctions/layout.html" %} {% load static %} {% block body %}
+<!--Main Content-->
+<div class="container">
+  <h2>Login</h2>
 
-{% block body %}
+  {% if message %}
+  <div>{{ message }}</div>
+  {% endif %}
 
-    <h2>Login</h2>
+  <form action="{% url 'login' %}" method="post">
+    {% csrf_token %}
+    <div class="form-group">
+      <input
+        autofocus
+        class="form-control"
+        type="text"
+        name="username"
+        placeholder="Username"
+      />
+    </div>
+    <div class="form-group">
+      <input
+        class="form-control"
+        type="password"
+        name="password"
+        placeholder="Password"
+      />
+    </div>
+    <input class="btn btn-primary" type="submit" value="Login" />
+  </form>
 
-    {% if message %}
-        <div>{{ message }}</div>
-    {% endif %}
+  Don't have an account? <a href="{% url 'register' %}">Register here.</a>
+  <!--Grid row-->
+  <div class="row wow fadeIn">
+    <!--Grid column-->
+    <div class="container mt-4">
+      <img
+        src="{% static 'auctions/juzmooth/juz_promo.png' %}"
+        class="card-img-top"
+        alt=""
+      />
+    </div>
+    <!--Grid column-->
+  </div>
+  <!--Grid row-->
+</div>
+<!-- End Main -->
 
-    <form action="{% url 'login' %}" method="post">
-        {% csrf_token %}
-        <div class="form-group">
-            <input autofocus class="form-control" type="text" name="username" placeholder="Username">
-        </div>
-        <div class="form-group">
-            <input class="form-control" type="password" name="password" placeholder="Password">
-        </div>
-        <input class="btn btn-primary" type="submit" value="Login">
-    </form>
+<!--Footer-->
+<footer
+  class="page-footer text-center font-small mt-10 wow fadeIn"
+  style="background-color: #faf0e6"
+>
+  <hr class="my-4" />
 
-    Don't have an account? <a href="{% url 'register' %}">Register here.</a>
+  <!-- Social icons -->
+  <div class="pb-4">
+    <a
+      href="https://www.facebook.com/Juzmooth-879856658763480"
+      class="nav-link waves-effect"
+      target="_blank"
+    >
+      <i class="fab fa-facebook-f"></i>
+    </a>
 
+    <a
+      href="https://www.instagram.com/juzmooth/?hl=es"
+      class="nav-link waves-effect"
+      target="_blank"
+    >
+      <i class="fab fa-instagram"></i>
+    </a>
+  </div>
+  <!-- Social icons -->
+
+  <!--Copyright-->
+  <div class="footer-copyright py-3">
+    © 2020 Copyright:
+    <a href="#" target="_blank"> Juzmooth </a>
+  </div>
+  <!--/.Copyright-->
+</footer>
+<!--/.Footer-->
 {% endblock %}
