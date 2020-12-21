@@ -9,10 +9,16 @@ from django.views.decorators.csrf import csrf_exempt
 
 from .models import User, Product, OrderProduct
 
+# Set global variables
+cartList = []
+count = 0
+
 
 def index(request):
-
-    return render(request, "auctions/index.html")
+    in_cart = len(cartList)
+    return render(request, "auctions/index.html", {
+        "in_cart": in_cart
+    })
 
 
 def login_view(request):
@@ -81,19 +87,61 @@ def product(request, prod_id):
 
     for product in allproducts:
         if clicked_prod == product.id:
+            prod_id = product.id
             prod_name = product.name
             prod_descpt = product.description
             prod_price = product.price
 
     return render(request, "auctions/product.html", {
+        "prod_id": prod_id,
         "prod_name": prod_name,
         "prod_descpt": prod_descpt,
         "prod_price": prod_price
     })
 
+# Block to display list of item in cart
+
 
 def checkout(request):
-    return render(request, "auctions/checkout.html")
+    print("reach cartList", cartList)
+    num_items = len(cartList)
+    send_cartList = cartList
+    if len(cartList) != 0:
+        for item in cartList:
+            item_name = item.name
+            item_price = item.price
+            print(f"items in cart: {item_name}, {item_price}",)
+            return render(request, "auctions/checkout.html", {
+                "item_name": item_name,
+                "item_price": item_price,
+                "items": num_items
+            })
+    return render(request, "auctions/checkout.html", {
+        "inCart": send_cartList,
+        "items": num_items
+    })
+
+
+# Block to add item to the checkout list
+
+
+def addToList(request, prod_id):
+    addProd_id = prod_id
+    print("addProd_id", addProd_id)
+
+    if request.method == "POST":
+        get_prod = Product.objects.get(pk=addProd_id)
+        cartList.append(get_prod)
+        print("cartList", cartList)
+        print("count", count)
+
+        if len(cartList) != 0:
+            for item in cartList:
+                item_name = item.name
+                item_price = item.price
+                print(f"items in cart: {item_name}, {item_price}",)
+
+    return HttpResponse(status=204)
 
 
 # Block to add, update or delete Products by the admins

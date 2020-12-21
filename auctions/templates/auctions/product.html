@@ -43,7 +43,12 @@
 
           <p>{{ prod_descpt }}</p>
 
-          <form class="d-flex justify-content-left">
+          <form
+            class="d-flex justify-content-left"
+            action="{% url 'addToList' prod_id %}"
+            method="post"
+          >
+            {% csrf_token %}
             <!-- Default input -->
             <input
               type="number"
@@ -52,22 +57,47 @@
               class="form-control"
               style="width: 100px"
             />
-            {% comment %}
-            <button
-              class="btn btn-primary btn-md my-0 p"
+
+            <input
+              class="btn btn-purple btn-md my-0 p"
               type="submit"
-              onclick="add_toCart()"
+              name="addItem"
+              value="Add to cart"
             >
-              Add to cart
-              <i class="fas fa-shopping-cart ml-1"></i>
-            </button>
-            {% endcomment %}
+            <i class="fas fa-shopping-cart ml-1"></i>
+            </input>
+
           </form>
           <button class="btn btn-primary btn-md my-0 p" onclick="add_toCart()">
             Add to cart
             <i class="fas fa-shopping-cart ml-1"></i>
           </button>
         </div>
+            <!-- Notification -->
+            <h6 class="my-5 h2 text-center">
+        Notificacion Importante
+        <span class="badge badge-danger badge-pill fas fa-ban">!</span>
+      </h6>
+      <hr />
+      <h6 class="d-flex justify-content-between align-items-center mb-3">
+        <span class="text-muted"
+          ><strong>Trabajo en progreso. </strong>Anadir un producto a tu cart solo creara una lista. Puedes enviar tu lista como <strong>mensage directo</strong> a nuestras cuentas de
+          <a
+            href="https://www.facebook.com/Juzmooth-879856658763480"
+            target="_blank"
+          >
+            <strong>Facebook</strong> </a
+          >o
+          <a href="https://www.instagram.com/juzmooth/?hl=es" target="_blank"
+            ><strong>Instagram </strong></a
+          >para realizar tu orden. Puedes a demas, mandarnos un mensaje a nuestro
+          <strong>WhatsApp</strong>:
+          <strong class="green-text">+593 93 993 4606</strong></span
+        >
+        <br />
+
+      </h6>
+      <hr />
         <!--Content-->
       </div>
       <!--Grid column-->
