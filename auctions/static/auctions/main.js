@@ -100,3 +100,14 @@ const editProd_view = (response) => {
     return false;
   });
 };
+
+//Set global variable to add count to cart in navbar
+var addCount = 0;
+
+// Block to count item and display in the navbar to show qty.
+
+const add_toCart = () => {
+  console.log("reach count");
+  addCount += 1;
+  document.querySelector("#count").innerHTML = addCount;
+};

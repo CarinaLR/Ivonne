@@ -52,11 +52,21 @@
               class="form-control"
               style="width: 100px"
             />
-            <button class="btn btn-primary btn-md my-0 p" type="submit">
+            {% comment %}
+            <button
+              class="btn btn-primary btn-md my-0 p"
+              type="submit"
+              onclick="add_toCart()"
+            >
               Add to cart
               <i class="fas fa-shopping-cart ml-1"></i>
             </button>
+            {% endcomment %}
           </form>
+          <button class="btn btn-primary btn-md my-0 p" onclick="add_toCart()">
+            Add to cart
+            <i class="fas fa-shopping-cart ml-1"></i>
+          </button>
         </div>
         <!--Content-->
       </div>
