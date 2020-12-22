@@ -11,6 +11,7 @@ from .models import User, Product, OrderProduct
 
 # Set global variables
 cartList = []
+cartCount = len(cartList)
 count = 0
 
 
@@ -77,6 +78,7 @@ def register(request):
 
 def product(request, prod_id):
     allproducts = Product.objects.all()
+    in_cart = len(cartList)
 
     if request.method == "POST":
 
@@ -96,7 +98,8 @@ def product(request, prod_id):
         "prod_id": prod_id,
         "prod_name": prod_name,
         "prod_descpt": prod_descpt,
-        "prod_price": prod_price
+        "prod_price": prod_price,
+        "in_cart": in_cart
     })
 
 # Block to display list of item in cart
@@ -106,6 +109,7 @@ def checkout(request):
     print("reach cartList", cartList)
     num_items = len(cartList)
     send_cartList = cartList
+    in_cart = len(cartList)
     if len(cartList) != 0:
         for item in cartList:
             item_name = item.name
@@ -114,11 +118,13 @@ def checkout(request):
             return render(request, "auctions/checkout.html", {
                 "item_name": item_name,
                 "item_price": item_price,
-                "items": num_items
+                "items": num_items,
+                "in_cart": in_cart
             })
     return render(request, "auctions/checkout.html", {
         "inCart": send_cartList,
-        "items": num_items
+        "items": num_items,
+        "in_cart": in_cart
     })
 
 
@@ -148,6 +154,7 @@ def addToList(request, prod_id):
 
 def adminProduct(request):
     allproducts = Product.objects.all()
+    in_cart = len(cartList)
 
     # Add new product via post request
     if request.method == "POST":
@@ -164,11 +171,13 @@ def adminProduct(request):
         product.save()
 
         return render(request, "auctions/adminProduct.html", {
-            "allProducts": allproducts
+            "allProducts": allproducts,
+            "in_cart": in_cart
         })
 
     return render(request, "auctions/adminProduct.html", {
-        "allProducts": allproducts
+        "allProducts": allproducts,
+        "in_cart": in_cart
     })
 
 # Block to Delete or Update product by id
