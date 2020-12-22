@@ -119,7 +119,8 @@ def checkout(request):
                 "item_name": item_name,
                 "item_price": item_price,
                 "items": num_items,
-                "in_cart": in_cart
+                "in_cart": in_cart,
+                "inCart": send_cartList,
             })
     return render(request, "auctions/checkout.html", {
         "inCart": send_cartList,
