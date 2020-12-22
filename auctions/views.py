@@ -13,6 +13,7 @@ from .models import User, Product, OrderProduct
 cartList = []
 cartCount = len(cartList)
 count = 0
+inCart_Total = []
 
 
 def index(request):
@@ -107,25 +108,33 @@ def product(request, prod_id):
 
 def checkout(request):
     print("reach cartList", cartList)
-    num_items = len(cartList)
     send_cartList = cartList
     in_cart = len(cartList)
+    # using list slicing
+    # Get last N elements from lis
+    res = inCart_Total[-in_cart:]
+    sumTotal = sum(res)
+    print("inCart_Total", inCart_Total)
+    print("sumTotal: $", sumTotal)
+
     if len(cartList) != 0:
         for item in cartList:
             item_name = item.name
             item_price = item.price
             print(f"items in cart: {item_name}, {item_price}",)
+
             return render(request, "auctions/checkout.html", {
                 "item_name": item_name,
                 "item_price": item_price,
-                "items": num_items,
                 "in_cart": in_cart,
                 "inCart": send_cartList,
+                "sumTotal": sumTotal
             })
+
     return render(request, "auctions/checkout.html", {
         "inCart": send_cartList,
-        "items": num_items,
-        "in_cart": in_cart
+        "in_cart": in_cart,
+        "sumTotal": sumTotal
     })
 
 
@@ -147,6 +156,7 @@ def addToList(request, prod_id):
                 item_name = item.name
                 item_price = item.price
                 print(f"items in cart: {item_name}, {item_price}",)
+                inCart_Total.append(item_price)
 
     return HttpResponse(status=204)
 
