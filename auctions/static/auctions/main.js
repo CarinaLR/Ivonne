@@ -111,3 +111,40 @@ const add_toCart = () => {
   addCount += 1;
   document.querySelector("#count").innerHTML = addCount;
 };
+
+// Block to send product description to toggle button
+
+const get_ProdDescpt = (prod_id) => {
+  var showprod_id = prod_id;
+  console.log(`this is the ${showprod_id} updating function`);
+
+  fetch("responseJSON")
+    .then((response) => response.json())
+    .then((response) => {
+      for (i = 0; i < response.length; i++) {
+        let prod = response[i];
+        if (prod.id === showprod_id) {
+          createProd_DescptView(prod);
+        }
+      }
+    });
+  return false;
+};
+
+// Creating Div to append component to each item
+
+const createProd_DescptView = (prod) => {
+  var toCheck = prod;
+  let prod_dscpt = toCheck.description;
+
+  let toggleCard = document.createElement("div");
+  toggleCard.className = "collapse";
+  toggleCard.id = "collapseExample";
+
+  let toggleDescpt = document.createElement("div");
+  toggleDescpt.className = "card card-body";
+  toggleDescpt.innerHTML = prod_dscpt;
+
+  toggleCard.appendChild(toggleDescpt);
+  document.getElementById("#prod_Div").appendChild(toggleCard);
+};
