@@ -111,7 +111,7 @@ def checkout(request):
     send_cartList = cartList
     in_cart = len(cartList)
     # using list slicing
-    # Get last N elements from lis
+    # Get last N elements from list
     res = inCart_Total[-in_cart:]
     sumTotal = sum(res)
     print("inCart_Total", inCart_Total)
