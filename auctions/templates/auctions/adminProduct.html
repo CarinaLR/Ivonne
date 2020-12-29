@@ -10,7 +10,7 @@
   <hr />
 
   <div class="container">
-    {% comment %} <form method="post">
+    {% comment %} <form method="get">
       {% csrf_token %} {% endcomment %}
 
       <!-- List Of Products -->
@@ -23,14 +23,18 @@
           <div id="prod_Div">
             <h5 class="my-0 dark-grey-text">{{ product.name }}</h5>
 
-            <button style="border-color: transparent; background-color: transparent;"  data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-            <small class="text-muted">Brief description</small>
+            <button
+              style="border-color: transparent; background-color: transparent"
+              data-toggle="collapse"
+              data-target="#collapseExample"
+              aria-expanded="false"
+              aria-controls="collapseExample"
+            >
+              <small class="text-muted">Brief description</small>
             </button>
 
             <div class="collapse" id="collapseExample">
-              <div class="card card-body">
-                {{ product.description}}
-              </div>
+              <div class="card card-body">{{ product.description}}</div>
             </div>
           </div>
 
@@ -39,16 +43,21 @@
               >${{ product.price }}</span
             >
             <br />
-            <button style="border-color: transparent; background-color: transparent;" href="{% url 'editProduct' product.id %}" id="update_prod" onclick="update_prod({{ product.id }})">
+            <button
+              style="border-color: transparent; background-color: transparent"
+              href="{% url 'editProduct' product.id %}"
+              id="update_prod"
+              onclick="update_prod({{ product.id }})"
+            >
               <span class="badge badge-pill primary-color">Update</span>
             </button>
 
-
-
-            <a style="border-color: transparent; background-color: transparent;" href="{% url 'deleteProduct' product.id %}">
-                <span class="badge badge-pill danger-color">Delete</span>
+            <a
+              style="border-color: transparent; background-color: transparent"
+              href="{% url 'deleteProduct' product.id %}"
+            >
+              <span class="badge badge-pill danger-color">Delete</span>
             </a>
-
           </h5>
         </li>
         {% endfor %}
@@ -136,17 +145,18 @@
     <!--/.Form New Product-->
   </div>
 
-    <!-- Edit Product -->
-    <div class="container" id="edit_box">
+  <!-- Edit Product -->
+  <div class="container" id="edit_box">
     <hr />
 
     <a href="" class="purple-text">
       <h5>Editar Producto</h5>
-      <h5 id="prod_idUpt" name="prod_idUpt">ID: </h5>
+      <h5 id="prod_idUpt" name="prod_idUpt">ID:</h5>
     </a>
     <small class="text-muted"
-      >Reemplaza cada caracteristica del producto. Puedes editar nombre, description del producto y precio. Para adjuntar una nueva imagen del producto, por favor
-      comunicarse con el Developer autorizado.</small
+      >Reemplaza cada caracteristica del producto. Puedes editar nombre,
+      description del producto y precio. Para adjuntar una nueva imagen del
+      producto, por favor comunicarse con el Developer autorizado.</small
     >
     <br />
 
@@ -207,7 +217,12 @@
         ></textarea>
 
         <hr class="mb-4" />
-        <input class="btn btn-primary btn-lg btn-block" type="submit" id="upt_button" value="Save"/>
+        <input
+          class="btn btn-primary btn-lg btn-block"
+          type="submit"
+          id="upt_button"
+          value="Save"
+        />
       </form>
     </div>
     <!--/.Form Edit Product-->
@@ -253,8 +268,14 @@
 </footer>
 <!--/.Footer-->
 
-{% endblock %}
-
-{% block script %}
+{% endblock %} {% block script %}
+<script
+  type="text/javascript"
+  src="http://cdnjs.cloudflare.com/ajax/libs/trianglify/0.1.2/trianglify.min.js"
+></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+  window.CSRF_TOKEN = "{{ csrf_token }}";
+</script>
 <script src="{% static 'auctions/main.js' %}"></script>
 {% endblock %}
