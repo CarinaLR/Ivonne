@@ -167,19 +167,41 @@ function showsData(response) {
   id = prod_id;
   document
     .querySelector("#upt_button")
-    .addEventListener("click", () => putHTTPRqt(id));
+    .addEventListener("click", () => getInputValues(id));
 }
 
-//Put request with onclick
-function putHTTPRqt(id) {
-  // Get values from input to update content
+const getInputValues = (id) => {
   // Get all values from textarea to update content.
   upt_prodName = document.getElementById("editProdName").value;
-  new_prodPrice = document.getElementById("editProdPrice").value;
+  new_prodPrice = document.querySelector("#editProdPrice").value;
   new_prodDescpt = document.getElementById("editProdDescpt").value;
 
   console.log(
     `ID: ${id}, Name: ${upt_prodName}, Price: ${upt_prodPrice}, Description: ${upt_prodDescpt}`
+  );
+
+  let valObj = {
+    id: id,
+    name: upt_prodName,
+    description: new_prodDescpt,
+    price: new_prodPrice,
+  };
+
+  putHTTPRqt(valObj);
+};
+
+//Put request with onclick
+function putHTTPRqt(valObj) {
+  // Get values from input to update content
+
+  prodTo_upt = valObj;
+  id = prodTo_upt.id;
+  let upt_name = prodTo_upt.name;
+  let upt_price = parseFloat(prodTo_upt.price);
+  let upt_descpt = prodTo_upt.description;
+
+  console.log(
+    `ID: ${id}, Name: ${upt_name}, Price: ${upt_price}, Description: ${upt_descpt}`
   );
 
   //PUT request to update.
@@ -189,9 +211,9 @@ function putHTTPRqt(id) {
       method: "PUT",
       headers: { "X-CSRFToken": getCookie("csrftoken") },
       body: JSON.stringify({
-        description: upt_prodDescpt,
-        name: upt_prodName,
-        price: upt_prodPrice,
+        name: upt_name,
+        description: upt_descpt,
+        price: upt_price,
       }),
     },
     console.log("FETCH PUT DONE")
