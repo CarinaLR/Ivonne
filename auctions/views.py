@@ -149,7 +149,8 @@ def addToList(request, prod_id):
         get_prod = Product.objects.get(pk=addProd_id)
         cartList.append(get_prod)
         print("cartList", cartList)
-        print("count", count)
+        proQty = request.POST.get("qty")
+        print("Qty", proQty)
 
         if len(cartList) != 0:
             for item in cartList:
