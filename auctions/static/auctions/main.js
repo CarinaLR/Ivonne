@@ -49,7 +49,10 @@ const get_ProdData = (prod_id) => {
   var updt_id = prod_id;
   console.log(`this is the ${updt_id} updating function`);
 
-  fetch("responseJSON")
+  fetch("responseJSON", {
+    method: "GET",
+    headers: { "X-CSRFToken": getCookie("csrftoken") },
+  })
     .then((response) => response.json())
     .then((response) => {
       for (i = 0; i < response.length; i++) {
@@ -63,13 +66,13 @@ const get_ProdData = (prod_id) => {
   return false;
 };
 
-// Set global varibles to use in form submition
+// Set global variables to use in form submission
 var id, upt_prodName, upt_prodPrice, upt_prodDescpt;
 
-// Block to populate textarea that allows user to update product info.
+// Block to populate textarea that allows the user to update product info.
 
 // const editProd_view = (response) => {
-//   // Getting response with information only for product to be edited.
+//   // Getting response with information only for the product to be edited.
 //   let prod_id = response.id;
 //   let edit_name = response.name;
 //   let edit_price = response.price;
