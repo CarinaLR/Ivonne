@@ -14,6 +14,7 @@ cartList = []
 cartCount = len(cartList)
 count = 0
 inCart_Total = []
+final_list = []
 
 
 def index(request):
@@ -116,6 +117,16 @@ def checkout(request):
     sumTotal = sum(res)
     print("inCart_Total", inCart_Total)
     print("sumTotal: $", sumTotal)
+    to_display = []
+
+    if len(final_list) != 0:
+        for item in final_list:
+            print("final_cost", item['qty'], item['product'])
+            final_cost = (int(item['qty']) * item['product'].price)
+            print('final_cost', final_cost)
+            to_display.append(
+                {'qty': item['qty'], 'product': item['product'], 'final_cost': final_cost})
+            print('to_Display', to_display)
 
     if len(cartList) != 0:
         for item in cartList:
@@ -144,6 +155,7 @@ def checkout(request):
 def addToList(request, prod_id):
     addProd_id = prod_id
     print("addProd_id", addProd_id)
+    show_qty = []
 
     if request.method == "POST":
         get_prod = Product.objects.get(pk=addProd_id)
@@ -151,6 +163,8 @@ def addToList(request, prod_id):
         print("cartList", cartList)
         proQty = request.POST.get("qty")
         print("Qty", proQty)
+        show_qty.append({"qty": proQty, "product": get_prod})
+        print("show_qty", show_qty)
 
         if len(cartList) != 0:
             for item in cartList:
@@ -158,6 +172,11 @@ def addToList(request, prod_id):
                 item_price = item.price
                 print(f"items in cart: {item_name}, {item_price}",)
                 inCart_Total.append(item_price)
+
+        if len(show_qty) != 0:
+            for prodObj in show_qty:
+                final_list.append(prodObj)
+                print("final-list: ", final_list)
 
     return HttpResponse(status=204)
 
