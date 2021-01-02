@@ -117,16 +117,36 @@ def checkout(request):
     sumTotal = sum(res)
     print("inCart_Total", inCart_Total)
     print("sumTotal: $", sumTotal)
+
     to_display = []
+    allItems_inCart = []
+    itemsQty = 0
+    finalPrices = []
+    totalPay = 0
 
     if len(final_list) != 0:
         for item in final_list:
-            print("final_cost", item['qty'], item['product'])
             final_cost = (int(item['qty']) * item['product'].price)
-            print('final_cost', final_cost)
             to_display.append(
                 {'qty': item['qty'], 'product': item['product'], 'final_cost': final_cost})
             print('to_Display', to_display)
+
+    if len(to_display) != 0:
+        for item in to_display:
+            allItems_inCart.append({"qty": item['qty'], "product": item['product'].name,
+                                    "price": item['product'].price, "final": item['final_cost']})
+            itemsQty = len(allItems_inCart)
+            finalPrices.append(item['final_cost'])
+            totalPay = sum(finalPrices)
+            print("TotalSum ->", totalPay)
+
+    if len(allItems_inCart) != 0:
+
+        return render(request, "auctions/checkout.html", {
+            "allItems_InCart": allItems_inCart,
+            "itemsQty": itemsQty,
+            "totalPay": totalPay
+        })
 
     if len(cartList) != 0:
         for item in cartList:
