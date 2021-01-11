@@ -121,8 +121,11 @@ def checkout(request):
     if len(final_list) != 0:
         for item in final_list:
             final_cost = (int(item['qty']) * item['product'].price)
+            # Call str.format(number) with "{:.2f}" as str and a float as number to return a string representation of the number with two decimal places.
+            a_float = final_cost
+            formatted_float1 = "{:.2f}".format(a_float)
             to_display.append(
-                {'qty': item['qty'], 'product': item['product'], 'final_cost': final_cost})
+                {'qty': item['qty'], 'product': item['product'], 'final_cost': formatted_float1})
             print('to_Display', to_display)
 
     if len(to_display) != 0:
@@ -130,16 +133,19 @@ def checkout(request):
             allItems_inCart.append({"qty": item['qty'], "product": item['product'].name,
                                     "price": item['product'].price, "final": item['final_cost']})
             itemsQty = len(allItems_inCart)
-            finalPrices.append(item['final_cost'])
+            finalPrices.append(float(item['final_cost']))
             totalPay = sum(finalPrices)
-            print("TotalSum ->", totalPay)
+            # Call str.format(number) with "{:.2f}" as str and a float as number to return a string representation of the number with two decimal places.
+            b_float = totalPay
+            formatted_float2 = "{:.2f}".format(b_float)
+            print("TotalSum", formatted_float2)
 
     if len(allItems_inCart) != 0:
 
         return render(request, "auctions/checkout.html", {
             "allItems_InCart": allItems_inCart,
             "itemsQty": itemsQty,
-            "totalPay": totalPay
+            "totalPay": formatted_float2
         })
 
     return render(request, "auctions/checkout.html", {
