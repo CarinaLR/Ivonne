@@ -34,12 +34,12 @@
                   {% csrf_token %}
                   <input type="hidden" name="product_value" value="2"/>
                 <!--Category & Title-->
-                <a href="" class="grey-text">
+                <a href="{% url 'product' 2 %}" class="grey-text">
                   <h5>Detox</h5>
                 </a>
                 <h5>
                   <strong>
-                    <a href="#" class="dark-grey-text">Cucumber-Jugo Verde
+                    <a href="{% url 'product' 2 %}" class="dark-grey-text">Cucumber-Jugo Verde
                      <span class="badge badge-pill primary-color">bestseller</span>
                     </a>
                   </strong>
@@ -79,12 +79,12 @@
                   {% csrf_token %}
                   <input type="hidden" name="product_value" value="3"/>
                 <!--Category & Title-->
-                <a href="" class="grey-text">
+                <a href="{% url 'product' 3 %}" class="grey-text">
                   <h5>Energy</h5>
                 </a>
                 <h5>
                   <strong>
-                    <a href="#" class="dark-grey-text">Red Lemonade</a>
+                    <a href="{% url 'product' 3 %}" class="dark-grey-text">Red Lemonade</a>
                   </strong>
                 </h5>
 
@@ -123,12 +123,12 @@
                   {% csrf_token %}
                   <input type="hidden" name="product_value" value="1"/>
                 <!--Category & Title-->
-                <a href="" class="grey-text">
+                <a href="{% url 'product' 1 %}" class="grey-text">
                   <h5>Accelera</h5>
                 </a>
                 <h5>
                   <strong>
-                    <a href="#" class="dark-grey-text">Accelerador de Metabolismo
+                    <a href="{% url 'product' 1 %}" class="dark-grey-text">Accelerador de Metabolismo
                       <span class="badge badge-pill primary-color">bestseller</span>
                     </a>
                   </strong>
@@ -169,12 +169,12 @@
                   {% csrf_token %}
                   <input type="hidden" name="product_value" value="4"/>
                 <!--Category & Title-->
-                <a href="" class="grey-text">
+                <a href="{% url 'product' 4 %}" class="grey-text">
                   <h5>Fortalece</h5>
                 </a>
                 <h5>
                   <strong>
-                    <a href="#" class="dark-grey-text">Ginger B - Botella de Jengibre
+                    <a href="{% url 'product' 4 %}" class="dark-grey-text">Ginger B - Botella de Jengibre
                     <span class="badge badge-pill danger-color">NEW</span>
                     </a>
                   </strong>
@@ -221,12 +221,12 @@
                   {% csrf_token %}
                   <input type="hidden" name="product_value" value="5"/>
                 <!--Category & Title-->
-                <a href="" class="grey-text">
+                <a href="{% url 'product' 5 %}" class="grey-text">
                   <h5>Detox</h5>
                 </a>
                 <h5>
                   <strong>
-                    <a href="#" class="dark-grey-text">For the week - Plan
+                    <a href="{% url 'product' 5 %}" class="dark-grey-text">For the week - Plan
                       <span class="badge badge-pill danger-color">NEW</span>
                     </a>
                   </strong>
@@ -267,12 +267,12 @@
                   {% csrf_token %}
                   <input type="hidden" name="product_value" value="6"/>
                 <!--Category & Title-->
-                <a href="" class="grey-text">
+                <a href="{% url 'product' 6 %}" class="grey-text">
                   <h5>Circulacion</h5>
                 </a>
                 <h5>
                   <strong>
-                    <a href="#" class="dark-grey-text">Chai Tea</a>
+                    <a href="{% url 'product' 6 %}" class="dark-grey-text">Chai Tea</a>
                   </strong>
                 </h5>
 
@@ -311,12 +311,12 @@
                   {% csrf_token %}
                   <input type="hidden" name="product_value" value="7"/>
                 <!--Category & Title-->
-                <a href="" class="grey-text">
+                <a href="{% url 'product' 7 %}" class="grey-text">
                   <h5>Diuretico</h5>
                 </a>
                 <h5>
                   <strong>
-                    <a href="#" class="dark-grey-text">Sunshine
+                    <a href="{% url 'product' 7 %}" class="dark-grey-text">Sunshine
                       <span class="badge badge-pill primary-color">bestseller</span>
                     </a>
                   </strong>
@@ -357,12 +357,12 @@
                   {% csrf_token %}
                   <input type="hidden" name="product_value" value="8"/>
                 <!--Category & Title-->
-                <a href="" class="grey-text">
+                <a href="{% url 'product' 8 %}" class="grey-text">
                   <h5>Hidrata</h5>
                 </a>
                 <h5>
                   <strong>
-                    <a href="#" class="dark-grey-text">Fresh + Clean</a>
+                    <a href="{% url 'product' 8 %}" class="dark-grey-text">Fresh + Clean</a>
                   </strong>
                 </h5>
 
@@ -488,7 +488,7 @@ energía, etc. tu elijes !!!</p>
                               <h4 class="font-weight-bold mb-0 text-center">About me</h4>
                               <hr>
                               <p class="text-center">
-                              Es diurético, combate infecciones causadas por bacterias, ayuda a reforzar el sistema inmunológico y nervioso. Tiene capacidad antioxidante.
+                              Es diurético, combate infecciones causadas por bacterias, ayuda a reforzar el sistema inmunológico y nervioso. Tiene capacidad antioxidante. Muy bueno para la digestion.
                               <hr>
                               </p>
                               <!-- Triggering button -->
@@ -526,7 +526,7 @@ energía, etc. tu elijes !!!</p>
                             <h4 class="font-weight-bold mb-0 text-center">About me</h4>
                             <hr>
                             <p class="text-center">
-                            Fuente de hierro, calcio, fibra, vitaminas C y B1 y selenio. Buena para personas con glucosa alta. Es beneficiosa para el colesterol y triglicéridos. Es buena para el cerebro. Ayuda a controlar la diabetes. Ayuda en la digestion. Disminuye el apetito.
+                            Fuente de hierro, calcio, fibra, vitaminas C y B1 y selenio. Buena para personas con glucosa alta. Es beneficiosa para el colesterol y triglicéridos. Es buena para el cerebro. Ayuda a controlar la diabetes. Ayuda en la digestion.
                             <hr>
                             </p>
                             <!-- Triggering button -->
@@ -608,7 +608,7 @@ energía, etc. tu elijes !!!</p>
                               <h4 class="font-weight-bold mb-0 text-center">About me</h4>
                               <hr>
                               <p class="text-center">
-                              Antioxidante. Mejora el funcionamiento del cerebro. Elimina las grasas. Mejora el rendimiento físico. Previene las enfermedades cardiovasculares.
+                              Antioxidante. Mejora el funcionamiento del cerebro. Elimina las grasas. Mejora el rendimiento físico. Previene las enfermedades cardiovasculares. Disminuye el apetito.
                               <hr>
                               </p>
                               <!-- Triggering button -->
