@@ -235,6 +235,17 @@ function messageSent() {
   return false;
 }
 
+// Block to notifify product added to checkout list
+
+let addingItem = document
+  .querySelector("#addItem")
+  .addEventListener("click", () => messageAddedProd());
+
+function messageAddedProd() {
+  alert("Tu producto fue añadido. Thank you!");
+  return false;
+}
+
 //Set global variable to add count to cart in navbar
 var addCount = 0;
 
