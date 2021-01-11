@@ -111,12 +111,6 @@ def checkout(request):
     print("reach cartList", cartList)
     send_cartList = cartList
     in_cart = len(cartList)
-    # using list slicing
-    # Get last N elements from list
-    res = inCart_Total[-in_cart:]
-    sumTotal = sum(res)
-    print("inCart_Total", inCart_Total)
-    print("sumTotal: $", sumTotal)
 
     to_display = []
     allItems_inCart = []
@@ -148,24 +142,9 @@ def checkout(request):
             "totalPay": totalPay
         })
 
-    if len(cartList) != 0:
-        for item in cartList:
-            item_name = item.name
-            item_price = item.price
-            print(f"items in cart: {item_name}, {item_price}",)
-
-            return render(request, "auctions/checkout.html", {
-                "item_name": item_name,
-                "item_price": item_price,
-                "in_cart": in_cart,
-                "inCart": send_cartList,
-                "sumTotal": sumTotal
-            })
-
     return render(request, "auctions/checkout.html", {
         "inCart": send_cartList,
         "in_cart": in_cart,
-        "sumTotal": sumTotal
     })
 
 
@@ -180,11 +159,8 @@ def addToList(request, prod_id):
     if request.method == "POST":
         get_prod = Product.objects.get(pk=addProd_id)
         cartList.append(get_prod)
-        print("cartList", cartList)
         proQty = request.POST.get("qty")
-        print("Qty", proQty)
         show_qty.append({"qty": proQty, "product": get_prod})
-        print("show_qty", show_qty)
 
         if len(cartList) != 0:
             for item in cartList:
