@@ -190,6 +190,7 @@ def adminProduct(request):
     in_cart = len(cartList)
 
     # Add new product via post request
+    # Attemp to add product using access-token in git repo
     if request.method == "POST":
         prod_name = request.POST["newProdName"]
         prod_descpt = request.POST["newProdDescpt"]
