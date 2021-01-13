@@ -112,9 +112,71 @@
         </form>
         <!-- Continuar Checkout -->
         <br />
-        <small class="my-5 h4 text-muted text-center">
+        <small class="my-5 h6 text-muted text-center">
           Información Adicional.
         </small>
+        <br />
+        <!-- Informacion Adicional -->
+        <form class="card p-2">
+          <!--Grid row-->
+          <div class="row">
+            <!--Grid column-->
+            <div class="col-md-6 mb-2">
+              <!--firstName-->
+              <div class="md-form">
+                <input type="text" id="firstName" class="form-control" />
+                <label for="firstName" class="">Nombre</label>
+              </div>
+            </div>
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-md-6 mb-2">
+              <!--lastName-->
+              <div class="md-form">
+                <input type="text" id="lastName" class="form-control" />
+                <label for="lastName" class="">Apellido</label>
+              </div>
+            </div>
+            <!--Grid column-->
+          </div>
+          <!--Grid row-->
+          <!--Email-->
+          <div class="md-form input-group pl-0 mb-5">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">@</span>
+            </div>
+            <input
+              type="text"
+              class="form-control py-0"
+              placeholder="Correo Electrónico"
+              aria-describedby="basic-addon1"
+            />
+          </div>
+          <!-- Phone Number -->
+          <div class="col-md-6 mb-2">
+            <!--firstName-->
+            <div class="md-form">
+              <input type="text" id="phoneNumber" class="form-control" />
+              <label for="phoneNumber" class="">Telefono</label>
+            </div>
+          </div>
+          <!-- Address -->
+          <div class="md-form input-group pl-0 mb-5">
+            <input
+              type="text"
+              class="form-control py-0"
+              placeholder="Dirección: sector, calle, nomenclatura, # de casa."
+              aria-describedby="basic-addon1"
+            />
+          </div>
+          <!-- Post Order -->
+          <hr class="mb-4" />
+          <button class="btn btn-green btn-lg btn-block" type="submit">
+            Realizar Pedido
+          </button>
+        </form>
+        <!-- Informacion Adicional -->
       </div>
       <!--Grid column-->
 
