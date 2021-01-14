@@ -1,0 +1,111 @@
+{% extends "auctions/layout.html" %} {% load static %} {% block body %}
+
+<!--Main Content-->
+<div class="container">
+  <h1>Pagina Administrativa</h1>
+  <small class="text-muted"
+    >Si eres un administrador, podras: eliminar ordenes que ya esten realizadas
+    y mantener ordenes para futuras entregas.</small
+  >
+  <hr />
+
+  <div class="container">
+    <!-- List Of Products -->
+    <a href="" class="purple-text">
+      <h5>Lista De Pedidos</h5>
+    </a>
+    <ul class="list-group mb-3 z-depth-1">
+      <li class="list-group-item d-flex justify-content-between lh-condensed">
+        <div id="prod_Div">
+          <h5 class="my-0 dark-grey-text">Nombre de producto</h5>
+
+          <button
+            style="border-color: transparent; background-color: transparent"
+            data-toggle="collapse"
+            data-target="#collapseExample"
+            aria-expanded="false"
+            aria-controls="collapseExample"
+          >
+            <small class="text-muted">Brief description</small>
+          </button>
+
+          <div class="collapse" id="collapseExample">
+            <div class="card card-body">Description del Pedido</div>
+          </div>
+        </div>
+
+        <h5>
+          <span class="text-muted font-weight-bold purple-text"
+            >Total: $0.00</span
+          >
+          <br />
+          <button
+            style="border-color: transparent; background-color: transparent"
+            href="#"
+            id="update_prod"
+          >
+            <span class="badge badge-pill primary-color">Update</span>
+          </button>
+
+          <a
+            style="border-color: transparent; background-color: transparent"
+            href="#"
+          >
+            <span class="badge badge-pill danger-color">Delete</span>
+          </a>
+        </h5>
+      </li>
+    </ul>
+  </div>
+  <!-- List Of Products -->
+
+  <!--Main Content-->
+</div>
+
+<!--Footer-->
+<footer
+  class="page-footer text-center font-small mt-4 wow fadeIn"
+  style="background-color: #faf0e6"
+>
+  <hr class="my-4" />
+
+  <!-- Social icons -->
+  <div class="pb-4">
+    <a
+      href="https://www.facebook.com/Juzmooth-879856658763480"
+      class="nav-link waves-effect"
+      target="_blank"
+    >
+      <i class="fab fa-facebook-f"></i>
+    </a>
+
+    <a
+      href="https://www.instagram.com/juzmooth/?hl=es"
+      class="nav-link waves-effect"
+      target="_blank"
+    >
+      <i class="fab fa-instagram"></i>
+    </a>
+  </div>
+  <!-- Social icons -->
+
+  <!--Copyright-->
+  <div class="footer-copyright py-3">
+    © 2020 Copyright:
+    <a href="#" target="_blank"> Juzmooth </a>
+  </div>
+  <!--/.Copyright-->
+</footer>
+<!--/.Footer-->
+
+{% endblock %} {% block script %}
+<script
+  type="text/javascript"
+  src="http://cdnjs.cloudflare.com/ajax/libs/trianglify/0.1.2/trianglify.min.js"
+></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+  window.CSRF_TOKEN = "{{ csrf_token }}";
+</script>
+<script src="{% static 'auctions/main.js' %}"></script>
+{% endblock %}
