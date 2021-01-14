@@ -141,17 +141,23 @@ def checkout(request):
             print("TotalSum", formatted_float2)
 
     if len(allItems_inCart) != 0:
-
+        print("allItems_InCart toDisplay ->", to_display)
         return render(request, "auctions/checkout.html", {
+            "prod_list": to_display,
             "allItems_InCart": allItems_inCart,
             "itemsQty": itemsQty,
-            "totalPay": formatted_float2
+            "totalPay": formatted_float2,
         })
 
     return render(request, "auctions/checkout.html", {
         "inCart": send_cartList,
         "in_cart": in_cart,
     })
+
+    if request.method == "POST":
+        orderList_forAdmin(to_display)
+        print("prod_list", to_display)
+        return HttpResponseRedirect(render(request, "auctions/index.html"))
 
 
 # Block to add item to the checkout list
@@ -277,6 +283,13 @@ def editProduct(request, prod_id):
 
     return HttpResponse(status=204)
 
+# Block to add list of product to order and update order list.
 
-def orderList_forAdmin(request):
+
+def orderList_forAdmin(request, prod_list):
+    add_prod_list = prod_list
+    print("reach ordeList --", add_prod_list)
+    # if request.method == "POST":
+    #     print("add_prod_list", add_prod_list)
+    #     return HttpResponseRedirect(render(request, "auctions/index.html"))
     return render(request, "auctions/orderListAdmin.html")
