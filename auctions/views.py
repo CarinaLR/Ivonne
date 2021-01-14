@@ -276,3 +276,7 @@ def editProduct(request, prod_id):
         get_prod.save()
 
     return HttpResponse(status=204)
+
+
+def orderList_forAdmin(request):
+    return render(request, "auctions/orderListAdmin.html")
