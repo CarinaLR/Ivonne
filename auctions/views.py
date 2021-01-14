@@ -128,6 +128,8 @@ def checkout(request):
                 {'qty': item['qty'], 'product': item['product'], 'final_cost': formatted_float1})
             print('to_Display', to_display)
 
+    # Block to show user the checkout list
+
     if len(to_display) != 0:
         for item in to_display:
             allItems_inCart.append({"qty": item['qty'], "product": item['product'].name,
@@ -139,25 +141,37 @@ def checkout(request):
             b_float = totalPay
             formatted_float2 = "{:.2f}".format(b_float)
             print("TotalSum", formatted_float2)
+    # Block to make a post request and save order
 
     if len(allItems_inCart) != 0:
         print("allItems_InCart toDisplay ->", to_display)
+
+        if request.method == "POST":
+            user = request.user
+
+            # Attemp to create new product ordered
+            username = user
+            prods_ordered = []
+
+            for order in to_display:
+                prods_ordered.append({"user": username, "ordered": True,
+                                      "product": order['product'], "quantity": int(order['qty'])})
+
+            print(f"username:{user} and userID: {user.id}")
+            print("prod_ordered:", prods_ordered)
+
+            for orderProd in prods_ordered:
+                orderProduct = OrderProduct.objects.create(
+                    user=orderProd['user'], ordered=orderProd['ordered'], product=orderProd['product'], quantity=orderProd['quantity']
+                )
+                orderProduct.save()
+
         return render(request, "auctions/checkout.html", {
             "prod_list": to_display,
             "allItems_InCart": allItems_inCart,
             "itemsQty": itemsQty,
             "totalPay": formatted_float2,
         })
-
-    return render(request, "auctions/checkout.html", {
-        "inCart": send_cartList,
-        "in_cart": in_cart,
-    })
-
-    if request.method == "POST":
-        orderList_forAdmin(to_display)
-        print("prod_list", to_display)
-        return HttpResponseRedirect(render(request, "auctions/index.html"))
 
 
 # Block to add item to the checkout list
@@ -286,10 +300,8 @@ def editProduct(request, prod_id):
 # Block to add list of product to order and update order list.
 
 
-def orderList_forAdmin(request, prod_list):
-    add_prod_list = prod_list
-    print("reach ordeList --", add_prod_list)
-    # if request.method == "POST":
-    #     print("add_prod_list", add_prod_list)
-    #     return HttpResponseRedirect(render(request, "auctions/index.html"))
+def orderList_forAdmin(request):
+
+    print("reach ordeList --")
+
     return render(request, "auctions/orderListAdmin.html")
