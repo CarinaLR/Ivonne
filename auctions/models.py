@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.utils import timezone
 
 
 class User(AbstractUser):
@@ -40,8 +41,7 @@ class Order(models.Model):
         max_length=300, default='(593) 099 203 - 302')
     products = models.ManyToManyField(OrderProduct)
     start_date = models.DateTimeField(auto_now_add=True)
-    ordered_date = models.DateTimeField(
-        default=start_date, null=True, blank=True)
+    ordered_date = models.DateTimeField(default=timezone.now)
     ordered = models.BooleanField(default=False)
 
     def __str__(self):
