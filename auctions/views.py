@@ -166,6 +166,25 @@ def checkout(request):
                 )
                 orderProduct.save()
 
+            # Take input information to attemp to create order for user
+
+            name = request.POST['firstName']
+            lastName = request.POST['lastName']
+            email = request.POST['email']
+            phoneNumber = request.POST['phoneNumber']
+            address = request.POST['address']
+
+            orderProds = OrderProduct.objects.all()
+            order_by_user = []
+
+            for order in orderProds:
+                print("orderProds ", order.user)
+                if order.user == name:
+                    order_by_user.append(order)
+
+            print(
+                f"name: {name}, lastName: {lastName}, email: {email}, phoneNumber: {phoneNumber}, address: {address}, products: {order_by_user}")
+
         return render(request, "auctions/checkout.html", {
             "prod_list": to_display,
             "allItems_InCart": allItems_inCart,
