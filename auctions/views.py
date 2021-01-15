@@ -178,8 +178,10 @@ def checkout(request):
             order_by_user = []
 
             for order in orderProds:
-                print("orderProds ", order.user)
-                if order.user == name:
+                username = order.user
+                print("username: ", order.user)
+                if username == name:
+                    print("adding user order")
                     order_by_user.append(order)
 
             print(
