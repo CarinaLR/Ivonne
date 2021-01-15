@@ -34,9 +34,14 @@ class OrderProduct(models.Model):
 class Order(models.Model):
     user = models.ForeignKey(User,
                              on_delete=models.CASCADE, related_name='users')
+    lastName = models.CharField(max_length=300, default='anonimo')
+    address = models.TextField(blank=True)
+    phoneNumber = models.CharField(
+        max_length=300, default='(593) 099 203 - 302')
     products = models.ManyToManyField(OrderProduct)
     start_date = models.DateTimeField(auto_now_add=True)
-    ordered_date = models.DateTimeField()
+    ordered_date = models.DateTimeField(
+        default=start_date, null=True, blank=True)
     ordered = models.BooleanField(default=False)
 
     def __str__(self):
