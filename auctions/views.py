@@ -170,7 +170,8 @@ def checkout(request):
 
             order_by_user = []
             orderProds = OrderProduct.objects.all()
-            order_by_user.append(orderProds[len(orderProds) - 1])
+            order_by_user.append(
+                orderProds[len(prods_ordered)])
 
             name = request.POST['firstName']
             lastName = request.POST['lastName']
