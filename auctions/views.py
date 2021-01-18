@@ -317,11 +317,30 @@ def editProduct(request, prod_id):
 
     return HttpResponse(status=204)
 
-# Block to add list of product to order and update order list.
+# Block to display order list.
 
 
 def orderList_forAdmin(request):
+    orders = []
+    orderList = Order.objects.all().order_by('pk')
+    print("ordeList: ", orderList)
+    in_orderList = []
 
-    print("reach ordeList --")
+    for order in orderList:
+        name = order.user
+        phoneNumber = order.phoneNumber
+        address = order.address
+        items = order.products.get()
+        order_date = order.ordered_date
+        products = []
+
+        qty = items.quantity
+        product = items.product.name
+        orders.append({"Qty": qty, "Producto": product})
+
+        in_orderList.append(
+            {f"name:{name}, phoneNumber:{phoneNumber}, address: {address}, item:{items}, pedido:{orders}, date:{order_date}"})
+
+    print(f"in_orderList: {in_orderList}")
 
     return render(request, "auctions/orderListAdmin.html")
