@@ -7,7 +7,7 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 
-from .models import User, Product, OrderProduct
+from .models import User, Product, OrderProduct, Order
 
 # Set global variables
 cartList = []
@@ -180,6 +180,11 @@ def checkout(request):
 
             print(
                 f"name: {name}, lastName: {lastName}, email: {email}, phoneNumber: {phoneNumber}, address: {address}, products: {order_by_user}")
+
+            order = Order.objects.create(user=username, lastName=lastName, address=address,
+                                         phoneNumber=phoneNumber, ordered=True)
+            order.products.set(order_by_user)
+            order.save()
 
         return render(request, "auctions/checkout.html", {
             "prod_list": to_display,

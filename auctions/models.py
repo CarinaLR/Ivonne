@@ -44,11 +44,11 @@ class Order(models.Model):
     ordered_date = models.DateTimeField(default=timezone.now)
     ordered = models.BooleanField(default=False)
 
-    def __str__(self):
-        return self, user.username
+    # def __str__(self):
+    #     return self, user.username
 
-    def get_order(self):
-        total = 0
-        for order_product in self.products.all():
-            total += order_product
-        return total
+    # def get_order(self):
+    #     total = 0
+    #     for order_product in self.products.all():
+    #         total += order_product
+    #     return total
