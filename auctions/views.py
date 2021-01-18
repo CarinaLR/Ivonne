@@ -168,21 +168,15 @@ def checkout(request):
 
             # Take input information to attemp to create order for user
 
+            order_by_user = []
+            orderProds = OrderProduct.objects.all()
+            order_by_user.append(orderProds[len(orderProds) - 1])
+
             name = request.POST['firstName']
             lastName = request.POST['lastName']
             email = request.POST['email']
             phoneNumber = request.POST['phoneNumber']
             address = request.POST['address']
-
-            orderProds = OrderProduct.objects.all()
-            order_by_user = []
-
-            for order in orderProds:
-                username = order.user
-                print("username: ", order.user)
-                if username == name:
-                    print("adding user order")
-                    order_by_user.append(order)
 
             print(
                 f"name: {name}, lastName: {lastName}, email: {email}, phoneNumber: {phoneNumber}, address: {address}, products: {order_by_user}")
