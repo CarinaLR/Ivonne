@@ -33,10 +33,8 @@
           <td class="border-right: solid 1px">{{ order.phone }}</td>
           <td class="border-right: solid 1px">{{ order.address }}</td>
           <td class="border-right: solid 1px">{{ order.date }}</td>
-          <td class="border-right: solid 1px">
-            Qty: 1 week plan, Qty: 1 Accelerador, Qty: 3 Chai Tea
-          </td>
-          <td class="border-right: solid 1px">$71.40</td>
+          <td class="border-right: solid 1px">{{ order.items }}</td>
+          <td class="border-right: solid 1px">${{ order.total }}</td>
           <td class="border-right: solid 1px">
             <a
               style="border-color: transparent; background-color: transparent"

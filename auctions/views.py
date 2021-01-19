@@ -328,6 +328,9 @@ def orderList_forAdmin(request):
     orderList = Order.objects.all().order_by('pk')
     print("ordeList: ", orderList)
     in_orderList = []
+    itemsQty = 0
+    prices = []
+    total = 0
 
     for order in orderList:
         client = order.user
@@ -336,13 +339,22 @@ def orderList_forAdmin(request):
         date = order.ordered_date
         # Order objects have access to their related orderProduct objects with.all() method.
         items = order.products.all()
+        inner_item = []
 
-        print(
-            f"client: {client}, phone: {phone}, address: {address}, date: {date}, items: {items}")
+        for item in items:
+            qty = item.quantity
+            prodc = item.product.name
+            price = item.product.price
+            inner_item.append({"Qty": qty, "Producto": prodc, "Precio": price})
+
+        for price in inner_item:
+            final_cost = (int(price['Qty']) * price['Precio'])
+            prices.append(final_cost)
+            total = sum(prices)
+
         in_orderList.append({"client": client, "phone": phone,
-                             "address": address, "date": date, "items": items})
-
-    print(f"in_orderList: {in_orderList}")
+                             "address": address, "date": date, "items": inner_item, "total": total})
+        prices = []
 
     return render(request, "auctions/orderListAdmin.html", {
         "in_orderList": in_orderList,
