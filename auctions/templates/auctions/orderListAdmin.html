@@ -27,13 +27,12 @@
       </thead>
       <tbody>
         <!--For loop for order list -->
+        {% for order in in_orderList %}
         <tr>
-          <td scope="row border-right: solid 1px">Laura</td>
-          <td class="border-right: solid 1px">205 - 2384</td>
-          <td class="border-right: solid 1px">
-            6 de Diciembre y Telegrafo, N27-43
-          </td>
-          <td class="border-right: solid 1px">22/01/2021</td>
+          <td scope="row border-right: solid 1px">{{ order.client }}</td>
+          <td class="border-right: solid 1px">{{ order.phone }}</td>
+          <td class="border-right: solid 1px">{{ order.address }}</td>
+          <td class="border-right: solid 1px">{{ order.date }}</td>
           <td class="border-right: solid 1px">
             Qty: 1 week plan, Qty: 1 Accelerador, Qty: 3 Chai Tea
           </td>
@@ -55,6 +54,7 @@
             </a>
           </td>
         </tr>
+        {% endfor %}
         <!--.End of For loop for order list -->
       </tbody>
 

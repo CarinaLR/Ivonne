@@ -330,20 +330,20 @@ def orderList_forAdmin(request):
     in_orderList = []
 
     for order in orderList:
-        name = order.user
-        phoneNumber = order.phoneNumber
+        client = order.user
+        phone = order.phoneNumber
         address = order.address
-        items = order.products.get()
-        order_date = order.ordered_date
-        products = []
+        date = order.ordered_date
+        # Order objects have access to their related orderProduct objects with.all() method.
+        items = order.products.all()
 
-        qty = items.quantity
-        product = items.product.name
-        orders.append({"Qty": qty, "Producto": product})
-
-        in_orderList.append(
-            {f"name:{name}, phoneNumber:{phoneNumber}, address: {address}, item:{items}, pedido:{orders}, date:{order_date}"})
+        print(
+            f"client: {client}, phone: {phone}, address: {address}, date: {date}, items: {items}")
+        in_orderList.append({"client": client, "phone": phone,
+                             "address": address, "date": date, "items": items})
 
     print(f"in_orderList: {in_orderList}")
 
-    return render(request, "auctions/orderListAdmin.html")
+    return render(request, "auctions/orderListAdmin.html", {
+        "in_orderList": in_orderList,
+    })
