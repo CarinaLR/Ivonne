@@ -141,6 +141,7 @@ def checkout(request):
             b_float = totalPay
             formatted_float2 = "{:.2f}".format(b_float)
             print("TotalSum", formatted_float2)
+
     # Block to make a post request and save order
 
     if len(allItems_inCart) != 0:
@@ -160,18 +161,17 @@ def checkout(request):
             print(f"username:{user} and userID: {user.id}")
             print("prod_ordered:", prods_ordered)
 
+            order_by_user = []
+
             for orderProd in prods_ordered:
                 orderProduct = OrderProduct.objects.create(
                     user=orderProd['user'], ordered=orderProd['ordered'], product=orderProd['product'], quantity=orderProd['quantity']
                 )
                 orderProduct.save()
+                order_by_user.append(
+                    orderProduct)
 
             # Take input information to attemp to create order for user
-
-            order_by_user = []
-            orderProds = OrderProduct.objects.all()
-            order_by_user.append(
-                orderProds[len(prods_ordered)])
 
             name = request.POST['firstName']
             lastName = request.POST['lastName']
@@ -184,7 +184,9 @@ def checkout(request):
 
             order = Order.objects.create(user=username, lastName=lastName, address=address,
                                          phoneNumber=phoneNumber, ordered=True)
-            order.products.set(order_by_user)
+
+            for product in order_by_user:
+                order.products.add(product)
             order.save()
 
         return render(request, "auctions/checkout.html", {
