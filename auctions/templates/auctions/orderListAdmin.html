@@ -18,7 +18,7 @@
       <!-- Table Of Products -->
       <table class="table table-hover mb-3 z-depth-1 border-right: solid 1px">
         <thead>
-          <tr>
+          <tr class="auto">
             <th scope="col" class="my-0 h5 dark-grey-text">Cliente</th>
             <th scope="col" class="my-0 h5 dark-grey-text">Telefono</th>
             <th scope="col" class="my-0 h5 dark-grey-text">Dirección</th>
@@ -30,7 +30,7 @@
         <tbody>
           <!--For loop for order list -->
           {% for order in in_orderList %}
-          <tr>
+          <tr class="auto">
             <td scope="row border-right: solid 1px">{{ order.client }}</td>
             <td class="border-right: solid 1px">{{ order.phone }}</td>
             <td class="border-right: solid 1px">{{ order.address }}</td>
@@ -42,7 +42,17 @@
                 style="border-color: transparent; background-color: transparent"
                 href="#"
               >
-                <span class="badge badge-pill green">Pendin</span>
+                <button
+                  class="badge badge-pill green"
+                  style="
+                    border-color: transparent;
+                    background-color: transparent;
+                  "
+                  onclick="pendingOrder()"
+                  id="pending"
+                >
+                  <span class="badge badge-pill green">Pending</span>
+                </button>
               </a>
             </td>
             <td>
@@ -50,7 +60,17 @@
                 style="border-color: transparent; background-color: transparent"
                 href="#"
               >
-                <span class="badge badge-pill danger-color">Delete</span>
+                <button
+                  class="badge badge-pill danger-color"
+                  style="
+                    border-color: transparent;
+                    background-color: transparent;
+                  "
+                  id="delete_ord"
+                  onclick="deleteOrder()"
+                >
+                  <span class="badge badge-pill danger-color">Delete</span>
+                </button>
               </a>
             </td>
           </tr>

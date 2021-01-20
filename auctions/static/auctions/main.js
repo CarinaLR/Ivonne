@@ -293,3 +293,9 @@ const createProd_DescptView = (prod) => {
   toggleCard.appendChild(toggleDescpt);
   document.getElementById("#prod_Div").appendChild(toggleCard);
 };
+
+// Disable button in orders page to mark as pending or to allow delete the order upon completed.
+
+const pendingOrder = () => {
+  document.getElementById("delete_ord").setAttribute("disabled", "disabled");
+};
