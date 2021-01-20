@@ -8,58 +8,61 @@
     y mantener ordenes para futuras entregas.</small
   >
   <hr />
-
-  <div class="container">
-    <a href="" class="purple-text">
-      <h5>Lista De Pedidos</h5>
-    </a>
+  <!--Section: Products v.3-->
+  <section class="mb-4">
+    <!-- Div Table Of Products -->
+    <div class="container-fluid">
+      <a href="" class="purple-text">
+        <h5>Lista De Pedidos</h5>
+      </a>
+      <!-- Table Of Products -->
+      <table class="table table-hover mb-3 z-depth-1 border-right: solid 1px">
+        <thead>
+          <tr>
+            <th scope="col" class="my-0 h5 dark-grey-text">Cliente</th>
+            <th scope="col" class="my-0 h5 dark-grey-text">Telefono</th>
+            <th scope="col" class="my-0 h5 dark-grey-text">Dirección</th>
+            <th scope="col" class="my-0 h5 dark-grey-text">Fecha</th>
+            <th scope="col" class="my-0 h5 dark-grey-text">Pedido</th>
+            <th scope="col" class="my-0 h5 dark-grey-text">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!--For loop for order list -->
+          {% for order in in_orderList %}
+          <tr>
+            <td scope="row border-right: solid 1px">{{ order.client }}</td>
+            <td class="border-right: solid 1px">{{ order.phone }}</td>
+            <td class="border-right: solid 1px">{{ order.address }}</td>
+            <td class="border-right: solid 1px">{{ order.date }}</td>
+            <td class="border-right: solid 1px">{{ order.items }}</td>
+            <td class="border-right: solid 1px">${{ order.total }}</td>
+            <td class="border-right: solid 1px">
+              <a
+                style="border-color: transparent; background-color: transparent"
+                href="#"
+              >
+                <span class="badge badge-pill green">Pendin</span>
+              </a>
+            </td>
+            <td>
+              <a
+                style="border-color: transparent; background-color: transparent"
+                href="#"
+              >
+                <span class="badge badge-pill danger-color">Delete</span>
+              </a>
+            </td>
+          </tr>
+          {% endfor %}
+          <!--.End of For loop for order list -->
+        </tbody>
+      </table>
+      <!--Grid column table-->
+    </div>
     <!-- Table Of Products -->
-    <table class="table table-hover mb-3 z-depth-1 border-right: solid 1px">
-      <thead>
-        <tr>
-          <th scope="col" class="my-0 h5 dark-grey-text">Cliente</th>
-          <th scope="col" class="my-0 h5 dark-grey-text">Telefono</th>
-          <th scope="col" class="my-0 h5 dark-grey-text">Dirección</th>
-          <th scope="col" class="my-0 h5 dark-grey-text">Fecha</th>
-          <th scope="col" class="my-0 h5 dark-grey-text">Pedido</th>
-          <th scope="col" class="my-0 h5 dark-grey-text">Total</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!--For loop for order list -->
-        {% for order in in_orderList %}
-        <tr>
-          <td scope="row border-right: solid 1px">{{ order.client }}</td>
-          <td class="border-right: solid 1px">{{ order.phone }}</td>
-          <td class="border-right: solid 1px">{{ order.address }}</td>
-          <td class="border-right: solid 1px">{{ order.date }}</td>
-          <td class="border-right: solid 1px">{{ order.items }}</td>
-          <td class="border-right: solid 1px">${{ order.total }}</td>
-          <td class="border-right: solid 1px">
-            <a
-              style="border-color: transparent; background-color: transparent"
-              href="#"
-            >
-              <span class="badge badge-pill green">Pendin</span>
-            </a>
-          </td>
-          <td>
-            <a
-              style="border-color: transparent; background-color: transparent"
-              href="#"
-            >
-              <span class="badge badge-pill danger-color">Delete</span>
-            </a>
-          </td>
-        </tr>
-        {% endfor %}
-        <!--.End of For loop for order list -->
-      </tbody>
-
-      <tbody></tbody>
-    </table>
-  </div>
-  <!-- Table Of Products -->
+  </section>
+  <!--Section: Products v.3-->
 
   <!--Main Content-->
 </div>
