@@ -150,7 +150,7 @@ def checkout(request):
         if request.method == "POST":
             user = request.user
 
-            # Attemp to create new product ordered
+            # Attempt to create new product ordered
             username = user
             prods_ordered = []
 
@@ -233,7 +233,7 @@ def adminProduct(request):
     in_cart = len(cartList)
 
     # Add new product via post request
-    # Attemp to add product using access-token in git repo
+    # Attempt to add product using access-token in git repo
     if request.method == "POST":
         prod_name = request.POST["newProdName"]
         prod_descpt = request.POST["newProdDescpt"]
@@ -333,6 +333,7 @@ def orderList_forAdmin(request):
     total = 0
 
     for order in orderList:
+        order_id = order.id
         client = order.user
         phone = order.phoneNumber
         address = order.address
@@ -352,10 +353,30 @@ def orderList_forAdmin(request):
             prices.append(final_cost)
             total = sum(prices)
 
-        in_orderList.append({"client": client, "phone": phone,
+        in_orderList.append({"id": order_id, "client": client, "phone": phone,
                              "address": address, "date": date, "items": inner_item, "total": total})
         prices = []
 
     return render(request, "auctions/orderListAdmin.html", {
         "in_orderList": in_orderList,
     })
+
+
+# Block to delete order for admin
+
+def deleteOrder(request, order_id):
+    ordID = order_id
+    toDelete_orderID = Order.objects.get(pk=ordID)
+    toDelete_orderProd = toDelete_orderID.products.all()
+
+    # Attempt to delete ordered products on m2m relationship.
+
+    for prod in toDelete_orderProd:
+        prod.delete()
+
+    # Attempt to delete order
+
+    order = Order.objects.get(pk=ordID)
+    order.delete()
+
+    return HttpResponse(status=204)

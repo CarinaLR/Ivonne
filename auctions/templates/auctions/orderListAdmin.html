@@ -58,7 +58,7 @@
             <td>
               <a
                 style="border-color: transparent; background-color: transparent"
-                href="#"
+                href="{% url 'deleteOrder' order.id%}"
               >
                 <button
                   class="badge badge-pill danger-color"
@@ -67,7 +67,6 @@
                     background-color: transparent;
                   "
                   id="delete_ord"
-                  onclick="deleteOrder()"
                 >
                   <span class="badge badge-pill danger-color">Delete</span>
                 </button>
