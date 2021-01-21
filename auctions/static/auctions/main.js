@@ -297,5 +297,12 @@ const createProd_DescptView = (prod) => {
 // Disable button in orders page to mark as pending or to allow delete the order upon completed.
 
 const pendingOrder = () => {
-  document.getElementById("delete_ord").setAttribute("disabled", "disabled");
+  document.getElementById("#").setAttribute("disabled", "disabled");
+};
+
+// Alertting admin that the order has been deleted.
+
+const delete_ord = () => {
+  alert("La orden sera borrada. Desea continuar?");
+  return false;
 };
