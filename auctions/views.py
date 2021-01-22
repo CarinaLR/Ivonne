@@ -350,7 +350,10 @@ def orderList_forAdmin(request):
 
         for price in inner_item:
             final_cost = (int(price['Qty']) * price['Precio'])
-            prices.append(final_cost)
+            # Call str.format(number) with "{:.2f}" as str and a float as number to return a string representation of the number with two decimal places.
+            a_float = final_cost
+            formatted_float1 = "{:.2f}".format(a_float)
+            prices.append(float(formatted_float1))
             total = sum(prices)
 
         in_orderList.append({"id": order_id, "client": client, "phone": phone,

@@ -55,7 +55,23 @@
                 >Qty: {{ product.qty }} | Por Unidad: ${{ product.price }}</span
               >
               <h6 class="my-0">{{ product.product }}</h6>
-              <small class="text-muted">Brief description</small>
+              <a
+                style="border-color: transparent; background-color: transparent"
+                href="#"
+                name="remove"
+              >
+                <button
+                  class="badge-pill purple btn btn-secondary btn-md m-0 padding: 1em"
+                  style="
+                    border-color: transparent;
+                    background-color: transparent;
+                  "
+                  id="#"
+                  onclick="return confirm('El producto sera borrada de su lista. Desea continuar?');"
+                >
+                  <small style="color: white">Remover de la lista</small>
+                </button>
+              </a>
             </div>
             <span class="text-muted">${{product.final}}</span>
           </li>
