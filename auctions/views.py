@@ -117,6 +117,7 @@ def checkout(request):
     itemsQty = 0
     finalPrices = []
     totalPay = 0
+    remove_item = request.POST.get('remove')
 
     if len(final_list) != 0:
         for item in final_list:
@@ -141,6 +142,11 @@ def checkout(request):
             b_float = totalPay
             formatted_float2 = "{:.2f}".format(b_float)
             print("TotalSum", formatted_float2)
+
+    # Block to remove item from list before place order.
+
+    if remove_item:
+        print('get remove signal')
 
     # Block to make a post request and save order
 
