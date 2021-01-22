@@ -195,6 +195,8 @@ def checkout(request):
             "itemsQty": itemsQty,
             "totalPay": formatted_float2,
         })
+    else:
+        return HttpResponse(status=204)
 
 
 # Block to add item to the checkout list
