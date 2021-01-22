@@ -143,11 +143,6 @@ def checkout(request):
             formatted_float2 = "{:.2f}".format(b_float)
             print("TotalSum", formatted_float2)
 
-    # Block to remove item from list before place order.
-
-    if remove_item:
-        print('get remove signal')
-
     # Block to make a post request and save order
 
     if len(allItems_inCart) != 0:
