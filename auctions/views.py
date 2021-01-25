@@ -117,7 +117,6 @@ def checkout(request):
     itemsQty = 0
     finalPrices = []
     totalPay = 0
-    remove_item = request.POST.get('remove')
 
     if len(final_list) != 0:
         for item in final_list:
@@ -328,7 +327,7 @@ def editProduct(request, prod_id):
 
 def orderList_forAdmin(request):
     orders = []
-    orderList = Order.objects.all().order_by('pk')
+    orderList = Order.objects.order_by("ordered_date").all()
     print("ordeList: ", orderList)
     in_orderList = []
     itemsQty = 0

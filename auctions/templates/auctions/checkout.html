@@ -67,7 +67,7 @@
                       value="1"
                       aria-label="Search"
                       class="form-control input-sm"
-                      style="width: 100px"
+                      style="width: 50px; height: 30px"
                     />
                   </div>
                   <div class="h-50 input-group-append">
@@ -76,6 +76,7 @@
                       type="submit"
                       value="Remover de la lista"
                       name="remove"
+                      style="height: 30px; padding: 0.5; margin: 0.5"
                     />
                   </div>
                 </div>
@@ -198,6 +199,7 @@
               class="btn btn-green btn-lg btn-block"
               type="submit"
               onclick="return confirm('Su pedido sera enviado. Desea continuar con la orden?');"
+              onsubmit="return confirm('Su pedido sera enviado. Gracias por preferirnos!');"
             >
               Realizar Pedido
             </button>
