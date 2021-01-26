@@ -34,7 +34,29 @@
             <td scope="row border-right: solid 1px">{{ client.id }}</td>
             <td class="border-right: solid 1px">{{ client.username }}</td>
             <td class="border-right: solid 1px">{{ client.email }}</td>
-            <td class="border-right: solid 1px">Jan-22-2021</td>
+            <td class="border-right: solid 1px">{{ client.date_joined }}</td>
+            {% if client.is_staff %}
+            <td>
+              <a
+                style="border-color: transparent; background-color: transparent"
+                href="#"
+              >
+                <button
+                  class="badge badge-pill primary-color"
+                  style="
+                    border-color: transparent;
+                    background-color: transparent;
+                  "
+                  id="delete_ord"
+                  onclick="return confirm('La acción eliminará permanentemente al cliente. Desea continuar?');"
+                >
+                  <span class="badge badge-pill primary-color green-text"
+                    >Permanent</span
+                  >
+                </button>
+              </a>
+            </td>
+            {% else %}
             <td>
               <a
                 style="border-color: transparent; background-color: transparent"
@@ -54,7 +76,7 @@
               </a>
             </td>
           </tr>
-          {% endfor %}
+          {% endif %} {% endfor %}
           <!--.End of For loop for order list -->
         </tbody>
       </table>
