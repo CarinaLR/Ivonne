@@ -4,8 +4,8 @@
 <div class="container">
   <h1>Página Administrativa</h1>
   <small class="text-muted"
-    >Si eres un administrador, podras: eliminar ordenes que ya esten realizadas
-    y mantener ordenes para futuras entregas.</small
+    >Si eres un administrador, podras: eliminar clientes y verificar su
+    información.</small
   >
   <hr />
   <!--Section: Products v.3-->
@@ -13,52 +13,32 @@
     <!-- Div Table Of Products -->
     <div class="container-fluid">
       <a href="" class="purple-text">
-        <h5>Lista De Pedidos</h5>
+        <h5>Lista De Clientes</h5>
       </a>
       <!-- Table Of Products -->
       <table class="table table-hover mb-3 z-depth-1 border-right: solid 1px">
         <thead>
           <tr class="auto">
-            <th scope="col" class="my-0 h5 dark-grey-text">Cliente</th>
-            <th scope="col" class="my-0 h5 dark-grey-text">Telefono</th>
-            <th scope="col" class="my-0 h5 dark-grey-text">Dirección</th>
-            <th scope="col" class="my-0 h5 dark-grey-text">Fecha</th>
-            <th scope="col" class="my-0 h5 dark-grey-text">Pedido</th>
-            <th scope="col" class="my-0 h5 dark-grey-text">Total</th>
+            <th scope="col" class="my-0 h5 dark-grey-text">ID</th>
+            <th scope="col" class="my-0 h5 dark-grey-text">Nombre</th>
+            <th scope="col" class="my-0 h5 dark-grey-text">Email</th>
+            <th scope="col" class="my-0 h5 dark-grey-text">
+              Fecha de creacion
+            </th>
           </tr>
         </thead>
         <tbody>
-          <!--For loop for order list -->
-          {% for order in in_orderList %}
+          <!--For loop for client list -->
+
           <tr class="auto">
-            <td scope="row border-right: solid 1px">{{ order.client }}</td>
-            <td class="border-right: solid 1px">{{ order.phone }}</td>
-            <td class="border-right: solid 1px">{{ order.address }}</td>
-            <td class="border-right: solid 1px">{{ order.date }}</td>
-            <td class="border-right: solid 1px">{{ order.items }}</td>
-            <td class="border-right: solid 1px">${{ order.total }}</td>
-            <td class="border-right: solid 1px">
-              <a
-                style="border-color: transparent; background-color: transparent"
-                href="#"
-              >
-                <button
-                  class="badge badge-pill green"
-                  style="
-                    border-color: transparent;
-                    background-color: transparent;
-                  "
-                  onclick="pendingOrder()"
-                  id="pending"
-                >
-                  <span class="badge badge-pill green">Pending</span>
-                </button>
-              </a>
-            </td>
+            <td scope="row border-right: solid 1px">1</td>
+            <td class="border-right: solid 1px">Laura</td>
+            <td class="border-right: solid 1px">lauraRD@example.com</td>
+            <td class="border-right: solid 1px">Jan-22-2021</td>
             <td>
               <a
                 style="border-color: transparent; background-color: transparent"
-                href="{% url 'deleteOrder' order.id%}"
+                href="#"
               >
                 <button
                   class="badge badge-pill danger-color"
@@ -67,14 +47,14 @@
                     background-color: transparent;
                   "
                   id="delete_ord"
-                  onclick="return confirm('La orden sera borrada. Desea continuar?');"
+                  onclick="return confirm('La acción eliminará permanentemente al cliente. Desea continuar?');"
                 >
                   <span class="badge badge-pill danger-color">Delete</span>
                 </button>
               </a>
             </td>
           </tr>
-          {% endfor %}
+
           <!--.End of For loop for order list -->
         </tbody>
       </table>

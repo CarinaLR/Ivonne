@@ -385,3 +385,11 @@ def deleteOrder(request, order_id):
     order.delete()
 
     return HttpResponse(status=204)
+
+# Block to allow admin to check list of cleint and manage.
+
+
+def clientList_forAdmin(request):
+    clients = User.objects.all()
+    print("users -> ", clients)
+    return render(request, "auctions/clientListAdmin.html")
