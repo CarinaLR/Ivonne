@@ -69,3 +69,7 @@ Tech Stack: `Python`/`Django`/`JavaScript`/ `Bootstrap4`/ `JQuery`/ `PostgrSQL`/
 ![](/auctions/static/auctions/readme/orderList.png)
 
 ## Mobile responsive design with toggle navbar and scrolling down the page, using the bootstrap grid system.
+
+![](/auctions/static/auctions/readme/responsive_1.png)
+
+![](/auctions/static/auctions/readme/responsive_2.png)
