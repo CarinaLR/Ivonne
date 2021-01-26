@@ -29,11 +29,11 @@
         </thead>
         <tbody>
           <!--For loop for client list -->
-
+          {% for client in clients %}
           <tr class="auto">
-            <td scope="row border-right: solid 1px">1</td>
-            <td class="border-right: solid 1px">Laura</td>
-            <td class="border-right: solid 1px">lauraRD@example.com</td>
+            <td scope="row border-right: solid 1px">{{ client.id }}</td>
+            <td class="border-right: solid 1px">{{ client.username }}</td>
+            <td class="border-right: solid 1px">{{ client.email }}</td>
             <td class="border-right: solid 1px">Jan-22-2021</td>
             <td>
               <a
@@ -54,7 +54,7 @@
               </a>
             </td>
           </tr>
-
+          {% endfor %}
           <!--.End of For loop for order list -->
         </tbody>
       </table>

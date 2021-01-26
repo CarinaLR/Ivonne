@@ -392,4 +392,6 @@ def deleteOrder(request, order_id):
 def clientList_forAdmin(request):
     clients = User.objects.all()
     print("users -> ", clients)
-    return render(request, "auctions/clientListAdmin.html")
+    return render(request, "auctions/clientListAdmin.html", {
+        "clients": clients
+    })
