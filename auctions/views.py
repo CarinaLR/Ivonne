@@ -392,6 +392,25 @@ def deleteOrder(request, order_id):
 def clientList_forAdmin(request):
     clients = User.objects.all()
     print("users -> ", clients)
+
     return render(request, "auctions/clientListAdmin.html", {
         "clients": clients
     })
+
+# Block to allow admin to delete client from list. Permanent action.
+
+
+def deleteClient(request, client_id):
+    clientID = client_id
+
+    toDelete_clientID = User.objects.get(pk=clientID)
+
+    # Attempt to delete client
+
+    user = User.objects.get(pk=clientID)
+    user.delete()
+
+    print(
+        f"client to delete with Id:{clientID}, and object: {toDelete_clientID }")
+
+    return HttpResponse(status=204)

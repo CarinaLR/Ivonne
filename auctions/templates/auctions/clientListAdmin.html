@@ -23,7 +23,7 @@
             <th scope="col" class="my-0 h5 dark-grey-text">Nombre</th>
             <th scope="col" class="my-0 h5 dark-grey-text">Email</th>
             <th scope="col" class="my-0 h5 dark-grey-text">
-              Fecha de creacion
+              Fecha de creación
             </th>
           </tr>
         </thead>
@@ -60,7 +60,7 @@
             <td>
               <a
                 style="border-color: transparent; background-color: transparent"
-                href="#"
+                href="{% url 'deleteClient' client.id%}"
               >
                 <button
                   class="badge badge-pill danger-color"

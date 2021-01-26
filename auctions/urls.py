@@ -22,4 +22,6 @@ urlpatterns = [
          views.deleteOrder, name="deleteOrder"),
     path("clientList_forAdmin",
          views.clientList_forAdmin, name="clientList_forAdmin"),
+    path("deleteClient/<int:client_id>",
+         views.deleteClient, name="deleteClient"),
 ]
