@@ -4,7 +4,7 @@ from django.utils import timezone
 
 
 class User(AbstractUser):
-    pass
+    is_staff = models.BooleanField(default=False)
 
 
 class Product(models.Model):

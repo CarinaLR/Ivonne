@@ -53,6 +53,8 @@ def register(request):
     if request.method == "POST":
         username = request.POST["username"]
         email = request.POST["email"]
+        checkbox = request.POST["checkbox"]
+        print("checkbox values:", checkbox)
 
         # Ensure password matches confirmation
         password = request.POST["password"]
@@ -64,7 +66,13 @@ def register(request):
 
         # Attempt to create new user
         try:
-            user = User.objects.create_user(username, email, password)
+            if checkbox == "staff":
+                is_staff = True
+            else:
+                is_staff = False
+
+            user = User.objects.create_user(
+                username, email, password, is_staff=is_staff)
             user.save()
         except IntegrityError:
             return render(request, "auctions/register.html", {
