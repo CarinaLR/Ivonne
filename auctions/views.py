@@ -64,7 +64,7 @@ def register(request):
                 "message": "Passwords must match."
             })
 
-        # Attempt to create new user
+        # Attempt to create new user. Confirm if the user's role, if is staff or customer.
         try:
             if checkbox == "staff":
                 is_staff = True
