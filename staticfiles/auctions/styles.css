@@ -1,0 +1,91 @@
+/* Tags */
+
+body {
+  padding: 10px;
+}
+
+html,
+body,
+header,
+.carousel {
+  height: 60vh;
+}
+
+/* Id */
+
+#details {
+  border-radius: 35px;
+  background-color: transparent;
+  border-color: green;
+}
+
+/* Class
+
+.pannels div.cback {
+  transform: rotateY(90deg);
+}
+
+.pannels div.cfront {
+  position: absolute;
+}
+
+.pannels div:hover div.cfront {
+  animation: twirl 0.2s ease-in forwards;
+}
+
+.pannels div:hover div.cback {
+  animation: twirl 0.2s 0.2s ease-out forwards reverse;
+}
+*/
+/*  Card Animation */
+/*
+@keyframes twirl {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(90deg);
+  }
+}
+*/
+
+/* Media */
+
+@media (max-width: 740px) {
+  html,
+  body,
+  header,
+  .carousel {
+    height: 100vh;
+  }
+}
+
+@media (min-width: 800px) and (max-width: 850px) {
+  html,
+  body,
+  header,
+  .carousel {
+    height: 100vh;
+  }
+}
+.view,
+body,
+html {
+  height: 100%;
+}
+.carousel {
+  height: 50%;
+}
+.carousel .carousel-inner,
+.carousel .carousel-inner .active,
+.carousel .carousel-inner .carousel-item {
+  height: 100%;
+}
+@media (max-width: 776px) {
+  .carousel {
+    height: 100%;
+  }
+}
+.page-footer {
+  background-color: #929fba;
+}
